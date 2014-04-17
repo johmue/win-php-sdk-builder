@@ -36,15 +36,18 @@ Which PHP versions are currently available?
 How to?
 -------
 
-Create a directory e.g. ```C:\php-build-55``` insert ```provision-php-55-sdk.bat``` and run it.
-It will download all necessary files for compiling PHP 5.5 and create a proper directory structure.
+    C:\> git clone https://github.com/johmue/win-php-sdk-builder.git
+    C:\> cd win-php-sdk-builder
+    C:\win-php-sdk-builder> build-php-55-sdk.bat
 
-After that you are able to compile the source. Therefore start the ```VS2012 x86 Native Tools Command Prompt```
-(you will find it in the start menu group) navigate to the directory e.g. ```C:\php-build-55``` and run one
-of the created ```compile*.bat``` files.
+Open ```VS2012 x86 Native Tools Command Prompt``` (you will find it in the start menu group of VS Studio)
+and navigate to the former created
 
-If everything worked fine you will find a compiled version of PHP in e.g.
-```C:\php-build-55\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x86.zip``` .
+    C:\win-php-sdk-builder> compile-php-5.5.11-nts.bat
+
+If everything worked fine you will find a compiled version of PHP in
+
+    C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x86.zip
 
 Prerequisites
 -------------
