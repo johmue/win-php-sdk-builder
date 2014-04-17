@@ -262,7 +262,7 @@ CD %DIR%
 @ECHO CD .\phpdev\vc11\x86\php-5.5.11>> compile-php-5.5.11-nts.bat
 @ECHO nmake clean>> compile-php-5.5.11-nts.bat
 @ECHO call buildconf.bat>> compile-php-5.5.11-nts.bat
-@ECHO call configure --disable-all --enable-cli --with-excel=shared --enable-lz4=shared --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.11/ --disable-static-analyze --disable-isapi --disable-nsapi --disable-zts>> compile-php-5.5.11-nts.bat
+@ECHO call configure --disable-all --enable-cli --with-excel=shared --enable-lz4=shared --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.11/ --enable-static-analyze --disable-isapi --disable-nsapi --disable-zts>> compile-php-5.5.11-nts.bat
 @ECHO nmake snap>> compile-php-5.5.11-nts.bat
 @ECHO CD .\..\..\..\..\>> compile-php-5.5.11-nts.bat
 @ECHO PAUSE>> compile-php-5.5.11-nts.bat
@@ -279,7 +279,7 @@ CD %DIR%
 @ECHO CD .\phpdev\vc11\x86\php-5.5.11>> compile-php-5.5.11-ts.bat
 @ECHO nmake clean>> compile-php-5.5.11-ts.bat
 @ECHO call buildconf.bat>> compile-php-5.5.11-ts.bat
-@ECHO call configure --disable-all --enable-cli --with-excel=shared --enable-lz4=shared --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.11/ --disable-static-analyze --disable-isapi --disable-nsapi>> compile-php-5.5.11-ts.bat
+@ECHO call configure --disable-all --enable-cli --with-excel=shared --enable-lz4=shared --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.11/ --enable-static-analyze --disable-isapi --disable-nsapi>> compile-php-5.5.11-ts.bat
 @ECHO nmake snap>> compile-php-5.5.11-ts.bat
 @ECHO CD .\..\..\..\..\>> compile-php-5.5.11-ts.bat
 @ECHO PAUSE>> compile-php-5.5.11-ts.bat
