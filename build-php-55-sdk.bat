@@ -31,25 +31,44 @@ SET PATH=%PATH%;%DIR%;%DIR%\downloads;%DIR%\bin;
 REM check for wget availability
 wget >nul 2>&1
 IF %ERRORLEVEL%==9009 (
-    REM checking for bitsadmin.exe to download wget.exe from web source
-    IF NOT EXIST "%SYSTEMROOT%\System32\bitsadmin.exe" (
+    REM check for php availability
+    php -v >nul 2>&1
+    IF NOT %ERRORLEVEL%==9009 (
+        REM download wget with php
         @ECHO.
-        @ECHO wget.exe not available
-        @ECHO failed to download wget.exe automatically
-        @ECHO please download wget from http://eternallybored.org/misc/wget/wget.exe or 
-        @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe manually
-        @ECHO and put the wget.exe file in .\downloads folder
-        @ECHO it is also available from the php-sdk-binary-tools zip archive
+        @ECHO loading wget...
+        php -r "file_put_contents('%DIR%\downloads\wget.exe',file_get_contents('http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe'));"
+    )
+    
+    IF NOT EXIST "%DIR%\downloads\wget.exe" (
+        REM checking for bitsadmin.exe to download wget.exe from web source
+        IF NOT EXIST "%SYSTEMROOT%\System32\bitsadmin.exe" (
+            @ECHO.
+            @ECHO wget.exe not available
+            @ECHO failed to download wget.exe automatically
+            @ECHO please download wget from http://eternallybored.org/misc/wget/wget.exe or 
+            @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe manually
+            @ECHO and put the wget.exe file in .\downloads folder
+            @ECHO it is also available from the php-sdk-binary-tools zip archive
+            PAUSE
+            EXIT
+        )
+        
+        REM bitsadmin.exe is available but wget.exe is not - so download it from web
+        @ECHO.
+        @ECHO loading wget for Windows from...
+        @ECHO http://eternallybored.org/misc/wget/wget.exe
+        REM @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe
+        bitsadmin.exe /transfer "WgetDownload" http://eternallybored.org/misc/wget/wget.exe %DIR%\downloads\wget.exe
+    )
+    
+    IF NOT EXIST "%DIR%\downloads\wget.exe" (
+        @ECHO.
+        @ECHO loading wget failed. Please re-run script or
+        @ECHO install .\downloads\wget.exe manually
         PAUSE
         EXIT
     )
-    
-    REM bitsadmin.exe is available but wget.exe is not - so download it from web
-    @ECHO.
-    @ECHO loading wget for Windows from...
-    @ECHO http://eternallybored.org/misc/wget/wget.exe
-    REM @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe
-    bitsadmin.exe /transfer "WgetDownload" http://eternallybored.org/misc/wget/wget.exe %DIR%\downloads\wget.exe
 )
 
 REM check for 7-zip cli tool
