@@ -40,8 +40,9 @@ How to?
     C:\> cd win-php-sdk-builder
     C:\win-php-sdk-builder> build-php-55-sdk.bat
 
-Open ```VS2012 x86 Native Tools Command Prompt``` (you will find it in the start menu group of VS Studio)
-and navigate to the former created
+The following commands must run within the ```VS2012 x86 Native Tools Command Prompt```
+(you will find it in the start menu group of VS Studio). It will not work with the standard
+Windows CLI.
 
     C:\win-php-sdk-builder> compile-php-5.5.11-nts.bat
 
