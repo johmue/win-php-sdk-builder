@@ -14,7 +14,7 @@ Building PHP or PHP extensions on Windows systems is not so easy even with a gre
 guide available here https://wiki.php.net/internals/windows/stepbystepbuild .
 
 These scripts are intended to ease this process for the average Windows PHP user and to 
-have a good starting point for compiling your own or thrid party extensions.
+have a good starting point for compiling your own or third party extensions.
 
 If you have ```Git``` and ```MS Visual Studio Express 2012 for Windows Desktop``` already installed it should
 compile a working PHP version within a few clicks.
@@ -22,7 +22,7 @@ compile a working PHP version within a few clicks.
 Why?
 ----
 
-The main reason (for me) is to create up to date versions of the php_excel and lz4 extensions for Windows environment.
+The main reason (for me) is to create up to date versions of the **php_excel** and **lz4** extensions for Windows environment.
 
 Which PHP versions are currently available?
 -------------------------------------------
