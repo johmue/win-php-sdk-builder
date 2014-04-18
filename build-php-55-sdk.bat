@@ -31,7 +31,7 @@ SET PATH=%PATH%;%DIR%;%DIR%\downloads;%DIR%\bin;
 REM check for wget availability
 wget >nul 2>&1
 IF %ERRORLEVEL%==9009 (
-    REM check for php availability
+    REM since wget is not available look if PHP is available and try to download wget from web with PHP
     php -v >nul 2>&1
     IF NOT %ERRORLEVEL%==9009 (
         REM download wget with php
@@ -40,6 +40,7 @@ IF %ERRORLEVEL%==9009 (
         php -r "file_put_contents('%DIR%\downloads\wget.exe',file_get_contents('http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe'));"
     )
     
+    REM if wget download with PHP failed try to download with bitsadmin.exe
     IF NOT EXIST "%DIR%\downloads\wget.exe" (
         REM checking for bitsadmin.exe to download wget.exe from web source
         IF NOT EXIST "%SYSTEMROOT%\System32\bitsadmin.exe" (
@@ -59,9 +60,10 @@ IF %ERRORLEVEL%==9009 (
         @ECHO loading wget for Windows from...
         @ECHO http://eternallybored.org/misc/wget/wget.exe
         REM @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe
-        bitsadmin.exe /transfer "WgetDownload" http://eternallybored.org/misc/wget/wget.exe %DIR%\downloads\wget.exe
+        bitsadmin.exe /transfer "WgetDownload" "http://eternallybored.org/misc/wget/wget.exe" "%DIR%\downloads\wget.exe"
     )
     
+    REM if download of wget failed stop script
     IF NOT EXIST "%DIR%\downloads\wget.exe" (
         @ECHO.
         @ECHO loading wget failed. Please re-run script or
@@ -78,30 +80,56 @@ IF %ERRORLEVEL%==9009 (
     @ECHO loading 7-zip cli tool from web...
     wget http://downloads.sourceforge.net/sevenzip/7za920.zip -O %DIR%\downloads\7za920.zip -N
 
-    REM check if unzip.exe is available to unpack 7-zip
-    unzip >nul 2>&1
-    IF %ERRORLEVEL%==9009 (
-        REM check for unzip tool in Git\bin
-        IF EXIST "%PROGRAMFILES(X86)%\Git\bin\unzip.exe" (
-            @ECHO.
-            @ECHO copying unzip.exe from Git...
-            COPY "%PROGRAMFILES(X86)%\Git\bin\unzip.exe" "%DIR%\downloads\"
-        )
-        
-        IF NOT EXIST "%DIR%\downloads\unzip.exe" (
-            @ECHO.
-            @ECHO please unpack .\downloads\7za920.zip manually and re-run this file
-            PAUSE
-            EXIT
-        )
+    REM if wget download of 7za failed stop script
+    IF NOT EXIST "%DIR%\downloads\7za920.zip" (
+        @ECHO.
+        @ECHO failed to download 7za920.zip - please re-run this script
+        PAUSE
+        EXIT
     )
     
-    REM unpacking 7za920.zip
+    REM if php is available try unpacking 7za with php
+    php -v >nul 2>&1
+    IF NOT %ERRORLEVEL%==9009 (
+        @ECHO.
+        @ECHO unpacking 7za.exe...
+        php -r "file_put_contents('%DIR%\downloads\7za.exe',file_get_contents('zip://%DIR%/downloads/7za920.zip#7za.exe'));"
+    )
+    
+    REM if unpacking 7za with PHP failed try to unpacking with unzip
+    IF NOT EXIST "%DIR%\downloads\7za.exe" (
+        REM check if unzip.exe is available to unpack 7-zip
+        unzip >nul 2>&1
+        IF %ERRORLEVEL%==9009 (
+            REM check for unzip tool in Git\bin
+            IF EXIST "%PROGRAMFILES(X86)%\Git\bin\unzip.exe" (
+                @ECHO.
+                @ECHO copying unzip.exe from Git...
+                COPY "%PROGRAMFILES(X86)%\Git\bin\unzip.exe" "%DIR%\downloads\"
+            )
+            
+            IF NOT EXIST "%DIR%\downloads\unzip.exe" (
+                @ECHO.
+                @ECHO please unpack .\downloads\7za920.zip manually and re-run this file
+                PAUSE
+                EXIT
+            )
+        )
+        
+        REM unpacking 7za920.zip
+        @ECHO.
+        @ECHO unpacking 7-zip cli tool...
+        CD %DIR%\downloads
+        unzip -C 7za920.zip 7za.exe
+        CD %DIR%
+    )
+)
+
+IF NOT EXIST "%DIR%\downloads\7za.exe" (
     @ECHO.
-    @ECHO unpacking 7-zip cli tool...
-    CD %DIR%\downloads
-    unzip -C 7za920.zip 7za.exe
-    CD %DIR%
+    @ECHO .\downloads\7za.exe not found - please re-run this script
+    PAUSE
+    EXIT
 )
 
 IF NOT EXIST "%DIR%\downloads\php-sdk-binary-tools-20110915.zip" (

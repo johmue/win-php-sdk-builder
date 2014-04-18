@@ -50,8 +50,8 @@ If everything worked fine you will find a compiled version of PHP in
 
     C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x86.zip
 
-Prerequisites
--------------
+Prerequisites to build PHP 5.5 and PHP 5.6
+------------------------------------------
 
 MS Visual Studio Express 2012 for Windows Desktop (**!!ATTENTION!!** do not take the 2013 version)  
 http://www.microsoft.com/en-us/download/details.aspx?id=34673
@@ -64,6 +64,11 @@ http://www.microsoft.com/en-us/download/details.aspx?id=30679
 
 wget (should be automatically loaded by the script if not available)  
 7-zip cli tool (should be automatically loaded by the script if not available)  
+
+Prerequisites to build PHP 5.3 and PHP 5.4
+------------------------------------------
+
+PHP 5.3 and PHP 5.4 are not supported
 
 Notes
 -----
