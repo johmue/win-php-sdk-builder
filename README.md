@@ -27,11 +27,13 @@ The main reason (for me) is to create up to date versions of the **php_excel** a
 Which PHP versions are currently available?
 -------------------------------------------
 
+**PHP 5.5.x**
 - php-5.5.11-nts-VC11-x86
 - php-5.5.11-VC11-x86
 - php-5.5.11-nts-VC11-x64
 - php-5.5.11-VC11-x64
-   
+
+**PHP 5.6.x**
 - php-5.6.0beta1-nts-VC11-x86
 - php-5.6.0beta1-VC11-x86
 - php-5.6.0beta1-nts-VC11-x64
@@ -44,9 +46,9 @@ How to?
     C:\> cd win-php-sdk-builder
     C:\win-php-sdk-builder> build-php-5.5.x-win32-sdk.bat
 
-Open ```VS2012 x86 Native Tools Command Prompt``` for a 32-bit PHP build or
+Open ```VS2012 x86 Native Tools Command Prompt``` for a 32-bit build or
 ```VS2012 x64 Cross Tools Command Prompt``` for a 64-bit build. You will find both in the start menu group of VS Studio.
-The folliwng commands will only work within the VS Command Prompts. **It will not work with the standard Windows CLI.**
+The following commands will only work within the VS Command Prompts. **It will not work with the standard Windows CLI.**
 
     C:\win-php-sdk-builder> compile-php-5.5.11-nts.bat
 
