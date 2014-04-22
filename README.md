@@ -1,14 +1,14 @@
-win-php-sdk-builder
-===================
+# win-php-sdk-builder
+=====================
 
-License
--------
+## License
+----------
 
 This software is distributed under the MIT license and is free of charge.
 For further information see the LICENSE file.
 
-What is it?
------------
+## What is it?
+--------------
 
 Building PHP or PHP extensions on Windows systems is not so easy even with a great step-by-step
 guide available here https://wiki.php.net/internals/windows/stepbystepbuild .
@@ -19,30 +19,30 @@ have a good starting point for compiling your own or third party extensions.
 If you have ```Git``` and ```MS Visual Studio Express 2012 for Windows Desktop``` already installed it should
 compile a working PHP version within a few clicks.
 
-Why?
-----
+## Why?
+-------
 
 The main reason (for me) is to create up to date versions of the **php_excel** and **lz4** extensions for Windows environment.
 
-Which PHP versions are currently available?
--------------------------------------------
+## Which PHP versions are currently available?
+----------------------------------------------
 
-**PHP 5.5.x**
+### PHP 5.5.x
 - php-5.5.11-nts-VC11-x86
 - php-5.5.11-VC11-x86
 - php-5.5.11-nts-VC11-x64
 - php-5.5.11-VC11-x64
 
-**PHP 5.6.x**
+### PHP 5.6.x
 - php-5.6.0beta1-nts-VC11-x86
 - php-5.6.0beta1-VC11-x86
 - php-5.6.0beta1-nts-VC11-x64
 - php-5.6.0beta1-VC11-x64
 
-How to?
--------
+## How to?
+----------
 
-**32-bit build**
+### 32-bit build
 
     C:\> git clone https://github.com/johmue/win-php-sdk-builder.git
     C:\> cd win-php-sdk-builder
@@ -57,7 +57,7 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 
     C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x86.zip
 
-**64-bit build**
+### 64-bit build
 
     C:\> git clone https://github.com/johmue/win-php-sdk-builder.git
     C:\> cd win-php-sdk-builder
@@ -72,8 +72,8 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 
     C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x64.zip
 
-Prerequisites to build PHP 5.5 and PHP 5.6
-------------------------------------------
+## Prerequisites to build PHP 5.5 and PHP 5.6
+---------------------------------------------
 
 MS Visual Studio Express 2012 for Windows Desktop (**!!ATTENTION!!** do not use the 2013 edition)  
 http://www.microsoft.com/en-us/download/details.aspx?id=34673
@@ -87,13 +87,13 @@ http://www.microsoft.com/en-us/download/details.aspx?id=30679
 wget (should be automatically loaded by the script if not available)  
 7-zip cli tool (should be automatically loaded by the script if not available)  
 
-Prerequisites to build PHP 5.3 and PHP 5.4
-------------------------------------------
+## Prerequisites to build PHP 5.3 and PHP 5.4
+---------------------------------------------
 
 PHP 5.3 and PHP 5.4 are not supported
 
-Notes
------
+## Notes
+--------
 
 Please note that it will also create two additonal extensions:
 
