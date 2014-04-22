@@ -27,15 +27,16 @@ The main reason (for me) is to create up to date versions of the **php_excel** a
 Which PHP versions are currently available?
 -------------------------------------------
 
-- php-5.5.11-nts-Win32-VC11-x86
-- php-5.5.11-Win32-VC11-x86
-- php-5.5.11-nts-Win32-VC11-x64
-- php-5.5.11-Win32-VC11-x64
+- php-5.5.11-nts-VC11-x86
+- php-5.5.11-VC11-x86
+- php-5.5.11-nts-VC11-x64
+- php-5.5.11-VC11-x64
 
-- php-5.6.0beta1-nts-Win32-VC11-x86
-- php-5.6.0beta1-Win32-VC11-x86
-- php-5.6.0beta1-nts-Win32-VC11-x64
-- php-5.6.0beta1-Win32-VC11-x64
+
+- php-5.6.0beta1-nts-VC11-x86
+- php-5.6.0beta1-VC11-x86
+- php-5.6.0beta1-nts-VC11-x64
+- php-5.6.0beta1-VC11-x64
 
 How to?
 -------
