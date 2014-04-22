@@ -29,31 +29,35 @@ Which PHP versions are currently available?
 
 - php-5.5.11-nts-Win32-VC11-x86
 - php-5.5.11-Win32-VC11-x86
+- php-5.5.11-nts-Win32-VC11-x64
+- php-5.5.11-Win32-VC11-x64
 
 - php-5.6.0beta1-nts-Win32-VC11-x86
 - php-5.6.0beta1-Win32-VC11-x86
+- php-5.6.0beta1-nts-Win32-VC11-x64
+- php-5.6.0beta1-Win32-VC11-x64
 
 How to?
 -------
 
     C:\> git clone https://github.com/johmue/win-php-sdk-builder.git
     C:\> cd win-php-sdk-builder
-    C:\win-php-sdk-builder> build-php-55-sdk.bat
+    C:\win-php-sdk-builder> build-php-5.5.x-win32-sdk.bat
 
-The following commands must run within the ```VS2012 x86 Native Tools Command Prompt```
-(you will find it in the start menu group of VS Studio). It will not work with the standard
-Windows CLI.
+Open ```VS2012 x86 Native Tools Command Prompt``` for a 32-bit PHP build or
+```VS2012 x64 Cross Tools Command Prompt``` for a 64-bit build. You will find both in the
+start menu group of VS Studio. **It will not work with the standard Windows CLI.**
 
     C:\win-php-sdk-builder> compile-php-5.5.11-nts.bat
 
-If everything worked fine you will find a compiled version of PHP in
+If everything worked fine you will find a compiled version of PHP e.g. here
 
     C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x86.zip
 
 Prerequisites to build PHP 5.5 and PHP 5.6
 ------------------------------------------
 
-MS Visual Studio Express 2012 for Windows Desktop (**!!ATTENTION!!** do not take the 2013 version)  
+MS Visual Studio Express 2012 for Windows Desktop (**!!ATTENTION!!** do not use the 2013 edition)  
 http://www.microsoft.com/en-us/download/details.aspx?id=34673
 
 Git for Windows  
@@ -73,7 +77,7 @@ PHP 5.3 and PHP 5.4 are not supported
 Notes
 -----
 
-Please note that it will also create two custom extensions:
+Please note that it will also create two additonal extensions:
 
 - php_excel.dll
 - lz4.dll
