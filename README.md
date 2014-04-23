@@ -95,4 +95,4 @@ Read more about PHP Excel here:
 https://github.com/iliaal/php_excel/ and here http://ilia.ws/files/confoo_phpexcel.pdf
 
 Read more about LZ4 here:  
-https://code.google.com/p/lz4/
+https://github.com/kjdev/php-ext-lz4 and here https://code.google.com/p/lz4/
