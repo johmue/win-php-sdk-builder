@@ -11,7 +11,7 @@ REM setting info box
 @ECHO.
 
 REM setting PHP version
-SET PHPVERSION=5.5.11
+SET PHPVERSION=5.5.13
 SET PHPMAJOR=%PHPVERSION:~0,3%
 
 REM setting full path of current directory to %DIR&
@@ -27,6 +27,22 @@ IF NOT EXIST "%DIR%\downloads" (
 
 REM adding current directory and ./downloads to path
 SET PATH=%PATH%;%DIR%;%DIR%\downloads;%DIR%\bin;
+
+REM -----------------------------------------------------------
+REM --- CHECK EXTENSIONS TO BUILD
+REM -----------------------------------------------------------
+@ECHO. 
+SET /P BUILDEXT_EXCEL=Do you want to build the excel extension? [y/n] 
+
+@ECHO. 
+SET /P BUILDEXT_LZ4=Do you want to build the lz4 extension? [y/n] 
+
+@ECHO. 
+SET /P BUILDEXT_PHALCON=Do you want to build the phalcon extension? [y/n] 
+
+REM -----------------------------------------------------------
+REM --- TOOLS CHECK
+REM -----------------------------------------------------------
 
 REM check for wget availability
 wget >nul 2>&1
@@ -125,12 +141,17 @@ IF %ERRORLEVEL%==9009 (
     )
 )
 
-IF NOT EXIST "%DIR%\downloads\7za.exe" (
+7za >nul 2>&1
+IF %ERRORLEVEL%==9009 (
     @ECHO.
-    @ECHO .\downloads\7za.exe not found - please re-run this script
+    @ECHO 7za.exe not found - please re-run this script
     PAUSE
     EXIT
 )
+
+REM -----------------------------------------------------------
+REM --- PHP SDK PREPARATION
+REM -----------------------------------------------------------
 
 IF NOT EXIST "%DIR%\downloads\php-sdk-binary-tools-20110915.zip" (
     @ECHO.
@@ -157,22 +178,8 @@ MD vc11
 CD vc11
 MD x64
 CD x64
-MD obj_5.5.11
+MD obj_5.5.13
 
-IF NOT EXIST "%SystemRoot%\System32\msvcr110.dll" (
-    @ECHO.
-    @ECHO MS visual c redistributable dll not found in system path
-    @ECHO possible problem for compiling
-    @ECHO grab an up-2-date version of msvcr110.dll from MS
-    @ECHO http://www.microsoft.com/en-us/download/details.aspx?id=30679
-    PAUSE
-)
-
-IF EXIST "%SystemRoot%\System32\msvcr110.dll" (
-    @ECHO.
-    @ECHO copying ms visual c redistributable dll from system path...
-    COPY %SystemRoot%\System32\msvcr110.dll %DIR%\phpdev\vc11\x64\deps\bin\
-)
 
 IF NOT EXIST "%DIR%\downloads\deps-5.5-vc11-x64.7z" (
     @ECHO.
@@ -191,24 +198,39 @@ IF NOT EXIST "%DIR%\downloads\deps-5.5-vc11-x64.7z" (
 @ECHO unpacking php dependencies...
 7za x %DIR%\downloads\deps-5.5-vc11-x64.7z -o%DIR%\phpdev\vc11\x64 -y
 
-IF NOT EXIST "%DIR%\downloads\php-5.5.11.tar.bz2" (
+IF NOT EXIST "%SystemRoot%\System32\msvcr110.dll" (
     @ECHO.
-    @ECHO loading php source code...
-    wget http://de1.php.net/get/php-5.5.11.tar.bz2/from/this/mirror -O %DIR%\downloads\php-5.5.11.tar.bz2 -N
+    @ECHO MS visual c redistributable dll not found in system path
+    @ECHO possible problem for compiling
+    @ECHO grab an up-2-date version of msvcr110.dll from MS
+    @ECHO http://www.microsoft.com/en-us/download/details.aspx?id=30679
+    PAUSE
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.5.11.tar.bz2" (
+IF EXIST "%SystemRoot%\System32\msvcr110.dll" (
+    @ECHO.
+    @ECHO copying ms visual c redistributable dll from system path...
+    COPY %SystemRoot%\System32\msvcr110.dll %DIR%\phpdev\vc11\x64\deps\bin\
+)
+
+IF NOT EXIST "%DIR%\downloads\php-5.5.13.tar.bz2" (
+    @ECHO.
+    @ECHO loading php source code...
+    wget http://de1.php.net/get/php-5.5.13.tar.bz2/from/this/mirror -O %DIR%\downloads\php-5.5.13.tar.bz2 -N
+)
+
+IF NOT EXIST "%DIR%\downloads\php-5.5.13.tar.bz2" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
     EXIT
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.5.11.tar" (
-    7za x %DIR%\downloads\php-5.5.11.tar.bz2 -o%DIR%\downloads -y
+IF NOT EXIST "%DIR%\downloads\php-5.5.13.tar" (
+    7za x %DIR%\downloads\php-5.5.13.tar.bz2 -o%DIR%\downloads -y
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.5.11.tar" (
+IF NOT EXIST "%DIR%\downloads\php-5.5.13.tar" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
@@ -217,79 +239,41 @@ IF NOT EXIST "%DIR%\downloads\php-5.5.11.tar" (
 
 @ECHO.
 @ECHO unpacking php source code...
-7za x %DIR%\downloads\php-5.5.11.tar -o%DIR%\phpdev\vc11\x64 -y
+7za x %DIR%\downloads\php-5.5.13.tar -o%DIR%\phpdev\vc11\x64 -y
 
 REM @ECHO cloning php-src repository from github...
-REM git clone -b "PHP-5.5.11" https://github.com/php/php-src.git php-5.5.11
+REM git clone -b "PHP-5.5.13" https://github.com/php/php-src.git php-5.5.13
 
 CD %DIR%
+
+SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.13/ --disable-isapi --disable-nsapi
 
 REM -----------------------------------------------------------
 REM --- PHP_EXCEL / LIBXL EXTENSION
 REM -----------------------------------------------------------
 
-CD %DIR%\phpdev\vc11\x64\php-5.5.11\ext
-
-@ECHO.
-@ECHO cloning php_excel repository...
-git clone https://github.com/iliaal/php_excel.git
-CD %DIR%\phpdev\vc11\x64\php-5.5.11\ext\php_excel
-
-IF NOT EXIST "%DIR%\downloads\libxl-win-3.5.4.zip" (
-    @ECHO.
-    @ECHO loading libxl library for php_excel...
-    wget ftp://xlware.com/libxl-win-3.5.4.zip -O %DIR%\downloads\libxl-win-3.5.4.zip -N
+IF /I %BUILDEXT_EXCEL%==Y (
+    call %DIR%\ext\php_excel_5.5.x_x64.bat
+    SET CFLAGS=%CFLAGS% --with-excel=shared
 )
-
-IF NOT EXIST "%DIR%\downloads\libxl-win-3.5.4.zip" (
-    @ECHO.
-    @ECHO libxl lib not found in .\downloads please re-run this script
-    PAUSE
-    EXIT
-)
-
-@ECHO.
-@ECHO unpacking libxl library...
-7za x %DIR%\downloads\libxl-win-3.5.4.zip -o%DIR%\phpdev\vc11\x64\php-5.5.11\ext\php_excel -y
-CD %DIR%\phpdev\vc11\x64\php-5.5.11\ext\php_excel
-RENAME libxl-3.5.4.1 libxl
-
-@ECHO.
-@ECHO rearranging local libxl files for php-src integration...
-XCOPY .\libxl\include_c\* .\libxl\ /E
-XCOPY .\libxl\bin64\* .\libxl\ /E
-
-@ECHO.
-@ECHO copying local libxl to php deps folder...
-XCOPY .\libxl\bin64\* %DIR%\phpdev\vc11\x64\deps\bin\ /E
-XCOPY .\libxl\lib64\* %DIR%\phpdev\vc11\x64\deps\lib\ /E
-XCOPY .\libxl\include_c\libxl.h %DIR%\phpdev\vc11\x64\deps\include\ /E
-MD %DIR%\phpdev\vc11\x64\deps\include\libxl
-XCOPY .\libxl\* %DIR%\phpdev\vc11\x64\deps\include\libxl\ /E
-
-CD %DIR%
 
 REM -----------------------------------------------------------
 REM --- LZ4 EXTENSION
 REM -----------------------------------------------------------
 
-CD %DIR%\phpdev\vc11\x64\php-5.5.11\ext
+IF /I %BUILDEXT_LZ4%==Y (
+    call %DIR%\ext\php_lz4_5.5.x_x64.bat
+    SET CFLAGS=%CFLAGS% --enable-lz4=shared
+)
 
-@ECHO.
-@ECHO cloning lz4 repository...
-git clone https://github.com/kjdev/php-ext-lz4.git
-CD %DIR%\phpdev\vc11\x64\php-5.5.11\ext\php-ext-lz4\lz4
+REM -----------------------------------------------------------
+REM --- PHALCON EXTENSION
+REM -----------------------------------------------------------
 
-@ECHO.
-@ECHO updating lz4 c files from original source
-wget https://lz4.googlecode.com/svn/trunk/lz4.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lz4.h -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lz4hc.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lz4hc.h -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/programs/xxhash.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/programs/xxhash.h -N --no-check-certificate
-
-CD %DIR%
+IF /I %BUILDEXT_PHALCON%==Y (
+    call %DIR%\ext\php_phalcon_5.5.x_x64.bat
+    SET CFLAGS=%CFLAGS% --enable-phalcon=shared --enable-pdo
+)
 
 REM -----------------------------------------------------------
 REM --- BUILDING COMPILE.BAT files
@@ -297,38 +281,38 @@ REM -----------------------------------------------------------
 
 CD %DIR%
 
-@ECHO @ECHO OFF> compile-php-5.5.11-nts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-5.5.11-nts-x64.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.11-nts-x64.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.11-nts-x64.bat
-@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.11-nts-x64.bat
-@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.11-nts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-5.5.11-nts-x64.bat
-@ECHO.>>compile-php-5.5.11-nts-x64.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.11-nts-x64.bat
-@ECHO CD .\phpdev\vc11\x64\php-5.5.11>> compile-php-5.5.11-nts-x64.bat
-@ECHO nmake clean>> compile-php-5.5.11-nts-x64.bat
-@ECHO call buildconf.bat>> compile-php-5.5.11-nts-x64.bat
-@ECHO call configure --disable-all --enable-cli --with-excel=shared --enable-lz4=shared --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.11/ --disable-static-analyze --disable-isapi --disable-nsapi --disable-zts>> compile-php-5.5.11-nts-x64.bat
-@ECHO nmake snap>> compile-php-5.5.11-nts-x64.bat
-@ECHO CD .\..\..\..\..\>> compile-php-5.5.11-nts-x64.bat
-@ECHO PAUSE>> compile-php-5.5.11-nts-x64.bat
+@ECHO @ECHO OFF> compile-php-5.5.13-nts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-5.5.13-nts-x64.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.13-nts-x64.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.13-nts-x64.bat
+@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.13-nts-x64.bat
+@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.13-nts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-5.5.13-nts-x64.bat
+@ECHO.>>compile-php-5.5.13-nts-x64.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.13-nts-x64.bat
+@ECHO CD .\phpdev\vc11\x64\php-5.5.13>> compile-php-5.5.13-nts-x64.bat
+@ECHO nmake clean>> compile-php-5.5.13-nts-x64.bat
+@ECHO call buildconf.bat>> compile-php-5.5.13-nts-x64.bat
+@ECHO call configure %CFLAGS% --disable-zts>> compile-php-5.5.13-nts-x64.bat
+@ECHO nmake snap>> compile-php-5.5.13-nts-x64.bat
+@ECHO CD .\..\..\..\..\>> compile-php-5.5.13-nts-x64.bat
+@ECHO PAUSE>> compile-php-5.5.13-nts-x64.bat
 
-@ECHO @ECHO OFF> compile-php-5.5.11-ts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-5.5.11-ts-x64.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.11-ts-x64.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.11-ts-x64.bat
-@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.11-ts-x64.bat
-@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.11-ts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-5.5.11-ts-x64.bat
-@ECHO.>>compile-php-5.5.11-ts-x64.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.11-ts-x64.bat
-@ECHO CD .\phpdev\vc11\x64\php-5.5.11>> compile-php-5.5.11-ts-x64.bat
-@ECHO nmake clean>> compile-php-5.5.11-ts-x64.bat
-@ECHO call buildconf.bat>> compile-php-5.5.11-ts-x64.bat
-@ECHO call configure --disable-all --enable-cli --with-excel=shared --enable-lz4=shared --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.5.11/ --disable-static-analyze --disable-isapi --disable-nsapi>> compile-php-5.5.11-ts-x64.bat
-@ECHO nmake snap>> compile-php-5.5.11-ts-x64.bat
-@ECHO CD .\..\..\..\..\>> compile-php-5.5.11-ts-x64.bat
-@ECHO PAUSE>> compile-php-5.5.11-ts-x64.bat
+@ECHO @ECHO OFF> compile-php-5.5.13-ts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-5.5.13-ts-x64.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.13-ts-x64.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.13-ts-x64.bat
+@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.13-ts-x64.bat
+@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.13-ts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-5.5.13-ts-x64.bat
+@ECHO.>>compile-php-5.5.13-ts-x64.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.13-ts-x64.bat
+@ECHO CD .\phpdev\vc11\x64\php-5.5.13>> compile-php-5.5.13-ts-x64.bat
+@ECHO nmake clean>> compile-php-5.5.13-ts-x64.bat
+@ECHO call buildconf.bat>> compile-php-5.5.13-ts-x64.bat
+@ECHO call configure %CFLAGS%>> compile-php-5.5.13-ts-x64.bat
+@ECHO nmake snap>> compile-php-5.5.13-ts-x64.bat
+@ECHO CD .\..\..\..\..\>> compile-php-5.5.13-ts-x64.bat
+@ECHO PAUSE>> compile-php-5.5.13-ts-x64.bat
 
 PAUSE

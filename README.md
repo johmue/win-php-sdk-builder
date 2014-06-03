@@ -23,16 +23,16 @@ The main reason (for me) is to create up to date versions of the **php_excel** a
 ## Which PHP versions are currently available?
 
 ### PHP 5.5.x
-- php-5.5.11-nts-VC11-x86
-- php-5.5.11-VC11-x86
-- php-5.5.11-nts-VC11-x64
-- php-5.5.11-VC11-x64
+- php-5.5.13-nts-VC11-x86
+- php-5.5.13-VC11-x86
+- php-5.5.13-nts-VC11-x64
+- php-5.5.13-VC11-x64
 
 ### PHP 5.6.x
-- php-5.6.0beta1-nts-VC11-x86
-- php-5.6.0beta1-VC11-x86
-- php-5.6.0beta1-nts-VC11-x64
-- php-5.6.0beta1-VC11-x64
+- php-5.6.0beta3-nts-VC11-x86
+- php-5.6.0beta3-VC11-x86
+- php-5.6.0beta3-nts-VC11-x64
+- php-5.6.0beta3-VC11-x64
 
 ## How to?
 
@@ -45,11 +45,11 @@ The main reason (for me) is to create up to date versions of the **php_excel** a
 Open ```VS2012 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\win-php-sdk-builder> compile-php-5.5.11-nts-x86.bat
+    C:\win-php-sdk-builder> compile-php-5.5.13-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x86.zip
+    C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.13\Release\php-5.5.13-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -60,11 +60,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\win-php-sdk-builder> compile-php-5.5.11-nts-x64.bat
+    C:\win-php-sdk-builder> compile-php-5.5.13-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.11\Release\php-5.5.11-nts-Win32-VC11-x64.zip
+    C:\win-php-sdk-builder\phpdev\vc11\x86\obj_5.5.13\Release\php-5.5.13-nts-Win32-VC11-x64.zip
 
 ## Prerequisites to build PHP 5.5 and PHP 5.6
 
@@ -89,10 +89,10 @@ PHP 5.3 and PHP 5.4 are not supported
 Please note that it will also create two additonal extensions:
 
 - php_excel.dll
-- lz4.dll
+- php_lz4.dll
 
 Read more about PHP Excel here:  
 https://github.com/iliaal/php_excel/ and here http://ilia.ws/files/confoo_phpexcel.pdf
 
 Read more about LZ4 here:  
-https://code.google.com/p/lz4/
+https://github.com/kjdev/php-ext-lz4 and here https://code.google.com/p/lz4/
