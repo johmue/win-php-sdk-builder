@@ -37,15 +37,6 @@ SET /P BUILDEXT_EXCEL=Do you want to build the excel extension? [y/n]
 @ECHO. 
 SET /P BUILDEXT_LZ4=Do you want to build the lz4 extension? [y/n] 
 
-@ECHO. 
-SET /P BUILDEXT_PHALCON=Do you want to build the phalcon extension? [y/n] 
-
-@ECHO. 
-SET /P BUILDEXT_PHASH=Do you want to build the pHash extension? [y/n] 
-
-@ECHO. 
-SET /P BUILDEXT_PIMPLE=Do you want to build the pimple extension? [y/n] 
-
 REM -----------------------------------------------------------
 REM --- TOOLS CHECK
 REM -----------------------------------------------------------
@@ -269,33 +260,6 @@ REM -----------------------------------------------------------
 IF /I %BUILDEXT_LZ4%==Y (
     call %DIR%\ext\php_lz4_5.5.x_x86.bat
     SET CFLAGS=%CFLAGS% --enable-lz4=shared
-)
-
-REM -----------------------------------------------------------
-REM --- PHALCON EXTENSION
-REM -----------------------------------------------------------
-
-IF /I %BUILDEXT_PHALCON%==Y (
-    call %DIR%\ext\php_phalcon_5.5.x_x86.bat
-    SET CFLAGS=%CFLAGS% --enable-phalcon=shared --enable-pdo
-)
-
-REM -----------------------------------------------------------
-REM --- PHASH EXTENSION
-REM -----------------------------------------------------------
-
-IF /I %BUILDEXT_PHASH%==Y (
-    call %DIR%\ext\php_phash_5.5.x_x86.bat
-    SET CFLAGS=%CFLAGS% --with-pHash=shared
-)
-
-REM -----------------------------------------------------------
-REM --- PIMPLE EXTENSION
-REM -----------------------------------------------------------
-
-IF /I %BUILDEXT_PIMPLE%==Y (
-    call %DIR%\ext\php_pimple_5.5.x_x86.bat
-    SET CFLAGS=%CFLAGS% --enable-pimple=shared
 )
 
 REM -----------------------------------------------------------

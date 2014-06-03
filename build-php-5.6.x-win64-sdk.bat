@@ -37,9 +37,6 @@ SET /P BUILDEXT_EXCEL=Do you want to build the excel extension? [y/n]
 @ECHO. 
 SET /P BUILDEXT_LZ4=Do you want to build the lz4 extension? [y/n] 
 
-@ECHO. 
-SET /P BUILDEXT_PHALCON=Do you want to build the phalcon extension? [y/n] 
-
 REM -----------------------------------------------------------
 REM --- TOOLS CHECK
 REM -----------------------------------------------------------
@@ -264,15 +261,6 @@ REM -----------------------------------------------------------
 IF /I %BUILDEXT_LZ4%==Y (
     call %DIR%\ext\php_lz4_5.6.x_x64.bat
     SET CFLAGS=%CFLAGS% --enable-lz4=shared
-)
-
-REM -----------------------------------------------------------
-REM --- PHALCON EXTENSION
-REM -----------------------------------------------------------
-
-IF /I %BUILDEXT_PHALCON%==Y (
-    call %DIR%\ext\php_phalcon_5.6.x_x64.bat
-    SET CFLAGS=%CFLAGS% --enable-phalcon=shared --enable-pdo
 )
 
 REM -----------------------------------------------------------
