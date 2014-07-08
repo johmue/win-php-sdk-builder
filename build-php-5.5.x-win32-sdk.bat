@@ -37,9 +37,6 @@ SET /P BUILDEXT_EXCEL=Do you want to build the excel extension? [y/n]
 @ECHO. 
 SET /P BUILDEXT_LZ4=Do you want to build the lz4 extension? [y/n] 
 
-@ECHO. 
-SET /P BUILDEXT_AV=Do you want to build the av extension? [y/n] 
-
 REM -----------------------------------------------------------
 REM --- TOOLS CHECK
 REM -----------------------------------------------------------
@@ -264,15 +261,6 @@ REM -----------------------------------------------------------
 IF /I %BUILDEXT_LZ4%==Y (
     call %DIR%\ext\php_lz4_5.5.x_x86.bat
     SET CFLAGS=%CFLAGS% --enable-lz4=shared
-)
-
-REM -----------------------------------------------------------
-REM --- AV EXTENSION
-REM -----------------------------------------------------------
-
-IF /I %BUILDEXT_AV%==Y (
-    call %DIR%\ext\php_av_5.5.x_x86.bat
-    SET CFLAGS=%CFLAGS% --with-av=shared
 )
 
 REM -----------------------------------------------------------
