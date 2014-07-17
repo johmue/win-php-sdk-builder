@@ -13,13 +13,13 @@ CD %DIR%\phpdev\vc11\x64\php-5.5.14\ext
 git clone https://github.com/iliaal/php_excel.git
 CD %DIR%\phpdev\vc11\x64\php-5.5.14\ext\php_excel
 
-IF NOT EXIST "%DIR%\downloads\libxl-win-3.5.4.zip" (
+IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.0.zip" (
     @ECHO.
     @ECHO loading libxl library for php_excel...
-    wget ftp://xlware.com/libxl-win-3.5.4.zip -O %DIR%\downloads\libxl-win-3.5.4.zip -N
+    wget ftp://xlware.com/libxl-win-3.6.0.zip -O %DIR%\downloads\libxl-win-3.6.0.zip -N
 )
 
-IF NOT EXIST "%DIR%\downloads\libxl-win-3.5.4.zip" (
+IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.0.zip" (
     @ECHO.
     @ECHO libxl lib not found in .\downloads please re-run this script
     PAUSE
@@ -28,9 +28,9 @@ IF NOT EXIST "%DIR%\downloads\libxl-win-3.5.4.zip" (
 
 @ECHO.
 @ECHO unpacking libxl library...
-7za x %DIR%\downloads\libxl-win-3.5.4.zip -o%DIR%\phpdev\vc11\x64\php-5.5.14\ext\php_excel -y
+7za x %DIR%\downloads\libxl-win-3.6.0.zip -o%DIR%\phpdev\vc11\x64\php-5.5.14\ext\php_excel -y
 CD %DIR%\phpdev\vc11\x64\php-5.5.14\ext\php_excel
-RENAME libxl-3.5.4.1 libxl
+RENAME libxl-3.6.0.0 libxl
 
 @ECHO.
 @ECHO rearranging local libxl files for php-src integration...
