@@ -252,7 +252,7 @@ REM -----------------------------------------------------------
 
 IF /I %BUILDEXT_EXCEL%==Y (
     call %DIR%\ext\php_excel_5.5.x_x64.bat
-    SET CFLAGS=%CFLAGS% --with-excel=shared
+    SET CFLAGS=%CFLAGS% --with-excel=shared --with-xml --with-libxml --with-iconv
 )
 
 REM -----------------------------------------------------------
@@ -275,13 +275,14 @@ CD %DIR%
 @ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.15-nts-x64.bat
 @ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.15-nts-x64.bat
 @ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.15-nts-x64.bat
-@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.15-nts-x64.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.5.15-nts-x64.bat
 @ECHO @ECHO ####################################################>> compile-php-5.5.15-nts-x64.bat
 @ECHO.>>compile-php-5.5.15-nts-x64.bat
+@ECHO PAUSE>>compile-php-5.5.15-nts-x64.bat
 @ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.15-nts-x64.bat
 @ECHO CD .\phpdev\vc11\x64\php-5.5.15>> compile-php-5.5.15-nts-x64.bat
 @ECHO nmake clean>> compile-php-5.5.15-nts-x64.bat
-@ECHO call buildconf.bat>> compile-php-5.5.15-nts-x64.bat
+@ECHO call buildconf.bat --force>> compile-php-5.5.15-nts-x64.bat
 @ECHO call configure %CFLAGS% --disable-zts>> compile-php-5.5.15-nts-x64.bat
 @ECHO nmake snap>> compile-php-5.5.15-nts-x64.bat
 @ECHO CD .\..\..\..\..\>> compile-php-5.5.15-nts-x64.bat
@@ -292,13 +293,14 @@ CD %DIR%
 @ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.15-ts-x64.bat
 @ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.15-ts-x64.bat
 @ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.15-ts-x64.bat
-@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.15-ts-x64.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.5.15-ts-x64.bat
 @ECHO @ECHO ####################################################>> compile-php-5.5.15-ts-x64.bat
 @ECHO.>>compile-php-5.5.15-ts-x64.bat
+@ECHO PAUSE>>compile-php-5.5.15-ts-x64.bat
 @ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.15-ts-x64.bat
 @ECHO CD .\phpdev\vc11\x64\php-5.5.15>> compile-php-5.5.15-ts-x64.bat
 @ECHO nmake clean>> compile-php-5.5.15-ts-x64.bat
-@ECHO call buildconf.bat>> compile-php-5.5.15-ts-x64.bat
+@ECHO call buildconf.bat --force>> compile-php-5.5.15-ts-x64.bat
 @ECHO call configure %CFLAGS%>> compile-php-5.5.15-ts-x64.bat
 @ECHO nmake snap>> compile-php-5.5.15-ts-x64.bat
 @ECHO CD .\..\..\..\..\>> compile-php-5.5.15-ts-x64.bat

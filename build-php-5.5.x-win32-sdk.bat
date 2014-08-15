@@ -251,7 +251,7 @@ REM -----------------------------------------------------------
 
 IF /I %BUILDEXT_EXCEL%==Y (
     call %DIR%\ext\php_excel_5.5.x_x86.bat
-    SET CFLAGS=%CFLAGS% --with-excel=shared
+    SET CFLAGS=%CFLAGS% --with-excel=shared --with-xml --with-libxml --with-iconv
 )
 
 REM -----------------------------------------------------------
@@ -274,9 +274,10 @@ CD %DIR%
 @ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.15-nts-x32.bat
 @ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.15-nts-x32.bat
 @ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.15-nts-x32.bat
-@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.15-nts-x32.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.5.15-nts-x32.bat
 @ECHO @ECHO ####################################################>> compile-php-5.5.15-nts-x32.bat
 @ECHO.>> compile-php-5.5.15-nts-x32.bat
+@ECHO PAUSE>> compile-php-5.5.15-nts-x32.bat
 @ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.15-nts-x32.bat
 @ECHO CD .\phpdev\vc11\x86\php-5.5.15>> compile-php-5.5.15-nts-x32.bat
 @ECHO nmake clean>> compile-php-5.5.15-nts-x32.bat
@@ -291,9 +292,10 @@ CD %DIR%
 @ECHO @ECHO ## Attention                                      ##>> compile-php-5.5.15-ts-x32.bat
 @ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.5.15-ts-x32.bat
 @ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.5.15-ts-x32.bat
-@ECHO @ECHO ## the standard Windows cli will not work         ##>> compile-php-5.5.15-ts-x32.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.5.15-ts-x32.bat
 @ECHO @ECHO ####################################################>> compile-php-5.5.15-ts-x32.bat
 @ECHO.>> compile-php-5.5.15-ts-x32.bat
+@ECHO PAUSE>> compile-php-5.5.15-ts-x32.bat
 @ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.5.15-ts-x32.bat
 @ECHO CD .\phpdev\vc11\x86\php-5.5.15>> compile-php-5.5.15-ts-x32.bat
 @ECHO nmake clean>> compile-php-5.5.15-ts-x32.bat
