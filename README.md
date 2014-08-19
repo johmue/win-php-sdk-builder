@@ -29,10 +29,10 @@ The main reason (for me) is to create up to date versions of the **php_excel** a
 - php-5.5.15-VC11-x64
 
 ### PHP 5.6.x
-- php-5.6.0RC3-nts-VC11-x86
-- php-5.6.0RC3-VC11-x86
-- php-5.6.0RC3-nts-VC11-x64
-- php-5.6.0RC3-VC11-x64
+- php-5.6.0RC4-nts-VC11-x86
+- php-5.6.0RC4-VC11-x86
+- php-5.6.0RC4-nts-VC11-x64
+- php-5.6.0RC4-VC11-x64
 
 ## How to?
 
@@ -78,7 +78,10 @@ MS Visual C++ Redistributable for Visual Studio 2012
 http://www.microsoft.com/en-us/download/details.aspx?id=30679
 
 wget (should be automatically loaded by the script if not available)  
+http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe
+
 7-zip cli tool (should be automatically loaded by the script if not available)  
+http://downloads.sourceforge.net/sevenzip/7za920.zip
 
 ## Prerequisites to build PHP 5.3 and PHP 5.4
 
