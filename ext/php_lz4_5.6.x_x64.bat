@@ -6,12 +6,12 @@ REM -----------------------------------------------------------
 SET DIR=%~dp0
 SET DIR=%Dir:~0,-1%\..
 
-CD %DIR%\phpdev\vc11\x64\php-5.6.0RC4\ext
+CD %DIR%\phpdev\vc11\x64\php-5.6.0\ext
 
 @ECHO.
 @ECHO cloning lz4 repository...
 git clone https://github.com/kjdev/php-ext-lz4.git
-CD %DIR%\phpdev\vc11\x64\php-5.6.0RC4\ext\php-ext-lz4\lz4
+CD %DIR%\phpdev\vc11\x64\php-5.6.0\ext\php-ext-lz4\lz4
 
 @ECHO.
 @ECHO updating lz4 c files from original source

@@ -29,10 +29,10 @@ The main reason (for me) is to create up to date versions of the **php_excel** a
 - php-5.5.16-VC11-x64
 
 ### PHP 5.6.x
-- php-5.6.0RC4-nts-VC11-x86
-- php-5.6.0RC4-VC11-x86
-- php-5.6.0RC4-nts-VC11-x64
-- php-5.6.0RC4-VC11-x64
+- php-5.6.0-nts-VC11-x86
+- php-5.6.0-VC11-x86
+- php-5.6.0-nts-VC11-x64
+- php-5.6.0-VC11-x64
 
 ## How to?
 
