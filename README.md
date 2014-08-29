@@ -18,7 +18,7 @@ compile a working PHP version within a few clicks.
 
 ## Why?
 
-The main reason (for me) is to create up to date versions of the **php_excel** and **lz4** extensions for Windows environment.
+The main reason (for me) is to create up to date versions of the **excel**, **lz4** and **twig** extensions for Windows environment.
 
 ## Which PHP versions are currently available?
 
@@ -93,9 +93,13 @@ Please note that it will also create two additonal extensions:
 
 - php_excel.dll
 - php_lz4.dll
+- php_twig.dll
 
 Read more about PHP Excel here:  
 https://github.com/iliaal/php_excel/ and here http://ilia.ws/files/confoo_phpexcel.pdf
 
 Read more about LZ4 here:  
 https://github.com/kjdev/php-ext-lz4 and here https://code.google.com/p/lz4/
+
+Read more about twig here:  
+https://github.com/fabpot/Twig and here http://twig.sensiolabs.org/documentation
