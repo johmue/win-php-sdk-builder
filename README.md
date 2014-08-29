@@ -89,7 +89,7 @@ PHP 5.3 and PHP 5.4 are not supported
 
 ## Notes
 
-Please note that it will also create two additonal extensions:
+Please note that it will also create additonal extensions:
 
 - php_excel.dll
 - php_lz4.dll
