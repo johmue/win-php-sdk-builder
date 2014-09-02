@@ -34,15 +34,15 @@ RENAME libxl-3.6.0.0 libxl
 
 @ECHO.
 @ECHO rearranging local libxl files for php-src integration...
-XCOPY .\libxl\include_c\* .\libxl\ /E
-XCOPY .\libxl\bin\* .\libxl\ /E
+XCOPY .\libxl\include_c\* .\libxl\ /E /Y
+XCOPY .\libxl\bin\* .\libxl\ /E /Y
 
 @ECHO.
 @ECHO copying local libxl to php deps folder...
-XCOPY .\libxl\bin\* %DIR%\phpdev\vc11\x86\deps\bin\ /E
-XCOPY .\libxl\lib\* %DIR%\phpdev\vc11\x86\deps\lib\ /E
-XCOPY .\libxl\include_c\libxl.h %DIR%\phpdev\vc11\x86\deps\include\ /E
+XCOPY .\libxl\bin\* %DIR%\phpdev\vc11\x86\deps\bin\ /E /Y
+XCOPY .\libxl\lib\* %DIR%\phpdev\vc11\x86\deps\lib\ /E /Y
+XCOPY .\libxl\include_c\libxl.h %DIR%\phpdev\vc11\x86\deps\include\ /E /Y
 MD %DIR%\phpdev\vc11\x86\deps\include\libxl
-XCOPY .\libxl\* %DIR%\phpdev\vc11\x86\deps\include\libxl\ /E
+XCOPY .\libxl\* %DIR%\phpdev\vc11\x86\deps\include\libxl\ /E /Y
 
 CD %DIR%
