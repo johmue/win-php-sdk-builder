@@ -271,7 +271,7 @@ REM -----------------------------------------------------------
 REM --- TWIG EXTENSION
 REM -----------------------------------------------------------
 
-IF /I %BUILDEXT_TWIG4%==Y (
+IF /I %BUILDEXT_TWIG%==Y (
     call %DIR%\ext\php_twig_5.5.x_x64.bat
     SET CFLAGS=%CFLAGS% --enable-twig=shared
 )
