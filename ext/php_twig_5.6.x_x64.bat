@@ -13,6 +13,8 @@ CD %DIR%\phpdev\vc11\x64\php-5.6.0\ext
 git clone --depth=1 https://github.com/fabpot/twig.git twig
 REM git filter-branch --subdirectory-filter ext/twig -- --all
 
+CD %DIR%\phpdev\vc11\x64\php-5.6.0\ext\twig
+
 @ECHO restructuring twig to make twig/ext/twig root/...
 git filter-branch --subdirectory-filter ext/twig
 
