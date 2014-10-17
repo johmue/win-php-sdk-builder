@@ -23,16 +23,16 @@ The main reason (for me) is to create up to date versions of the **excel**, **lz
 ## Which PHP versions are currently available?
 
 ### PHP 5.5.x
-- php-5.5.17-nts-VC11-x86
-- php-5.5.17-VC11-x86
-- php-5.5.17-nts-VC11-x64
-- php-5.5.17-VC11-x64
+- php-5.5.18-nts-VC11-x86
+- php-5.5.18-VC11-x86
+- php-5.5.18-nts-VC11-x64
+- php-5.5.18-VC11-x64
 
 ### PHP 5.6.x
-- php-5.6.1-nts-VC11-x86
-- php-5.6.1-VC11-x86
-- php-5.6.1-nts-VC11-x64
-- php-5.6.1-VC11-x64
+- php-5.6.2-nts-VC11-x86
+- php-5.6.2-VC11-x86
+- php-5.6.2-nts-VC11-x64
+- php-5.6.2-VC11-x64
 
 ## How to?
 
@@ -45,11 +45,11 @@ The main reason (for me) is to create up to date versions of the **excel**, **lz
 Open ```VS2012 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.5.17-nts-x86.bat
+    C:\php-sdk> compile-php-5.5.18-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.5.17\Release\php-5.5.17-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.5.18\Release\php-5.5.18-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -60,11 +60,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.5.17-nts-x64.bat
+    C:\php-sdk> compile-php-5.5.18-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.5.17\Release\php-5.5.17-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.5.18\Release\php-5.5.18-nts-Win32-VC11-x64.zip
 
 ## Prerequisites to build PHP 5.5 and PHP 5.6
 
