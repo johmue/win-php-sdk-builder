@@ -35,9 +35,6 @@ REM -----------------------------------------------------------
 SET /P BUILDEXT_EXCEL=Do you want to build the excel extension? [y/n] 
 
 @ECHO. 
-SET /P BUILDEXT_PHDFS=Do you want to build the phdfs extension? [y/n] 
-
-@ECHO. 
 SET /P BUILDEXT_LZ4=Do you want to build the lz4 extension? [y/n] 
 
 @ECHO. 
@@ -258,18 +255,6 @@ REM -----------------------------------------------------------
 IF /I %BUILDEXT_EXCEL%==Y (
     call %DIR%\ext\php_excel_5.6.x_x86.bat
     SET CFLAGS=%CFLAGS% --with-excel=shared --with-xml --with-libxml --with-iconv
-)
-
-REM -----------------------------------------------------------
-REM --- PHDFS EXTENSION
-REM -----------------------------------------------------------
-
-REM ONLY WORKING WITH THREAD_SAFETY
-REM see https://github.com/yuduanchen/phdfs/wiki/Requirements
-
-IF /I %BUILDEXT_PHDFS%==Y (
-    call %DIR%\ext\php_phdfs_5.6.x_x86.bat
-    SET CFLAGS=%CFLAGS% --enable-phdfs=shared
 )
 
 REM -----------------------------------------------------------
