@@ -19,7 +19,7 @@ wget https://lz4.googlecode.com/svn/trunk/lz4.c -N --no-check-certificate
 wget https://lz4.googlecode.com/svn/trunk/lz4.h -N --no-check-certificate
 wget https://lz4.googlecode.com/svn/trunk/lz4hc.c -N --no-check-certificate
 wget https://lz4.googlecode.com/svn/trunk/lz4hc.h -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/programs/xxhash.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/programs/xxhash.h -N --no-check-certificate
+wget https://lz4.googlecode.com/svn/trunk/xxhash.c -N --no-check-certificate
+wget https://lz4.googlecode.com/svn/trunk/xxhash.h -N --no-check-certificate
 
 CD %DIR%
