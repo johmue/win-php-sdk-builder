@@ -30,7 +30,7 @@ IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.1.zip" (
 @ECHO unpacking libxl library...
 7za x %DIR%\downloads\libxl-win-3.6.1.zip -o%DIR%\phpdev\vc11\x64\php-5.5.18\ext\php_excel -y
 CD %DIR%\phpdev\vc11\x64\php-5.5.18\ext\php_excel
-RENAME libxl-3.6.1.0 libxl
+RENAME libxl-3.6.1.1 libxl
 
 @ECHO.
 @ECHO rearranging local libxl files for php-src integration...
