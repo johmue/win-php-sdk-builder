@@ -34,6 +34,12 @@ The main reason (for me) is to create up to date versions of the **excel**, **lz
 - php-5.6.5-nts-VC11-x64
 - php-5.6.5-VC11-x64
 
+## PHP 7.0.x-dev
+- php-7.0.0-nts-VC11-x86-dev
+- php-7.0.0-VC11-x86-dev
+- php-7.0.0-nts-VC11-x64-dev
+- php-7.0.0-VC11-x64-dev
+
 ## How to?
 
 ### 32-bit build
@@ -93,7 +99,7 @@ Please note that it will also create additonal extensions:
 
 - php_excel.dll
 - php_lz4.dll
-- php_twig.dll
+- php_twig.dll (PHP 7.0.x not yet supported)
 
 Read more about PHP Excel here:  
 https://github.com/iliaal/php_excel/ and here http://ilia.ws/files/confoo_phpexcel.pdf

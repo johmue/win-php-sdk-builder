@@ -212,6 +212,21 @@ IF EXIST "%SystemRoot%\System32\msvcr110.dll" (
     COPY "%SystemRoot%\System32\msvcr110.dll" "%DIR%\phpdev\vc11\x86\deps\bin\"
 )
 
+IF NOT EXIST "%SystemRoot%\System32\msvcr110d.dll" (
+    @ECHO.
+    @ECHO MS visual c redistributable dll not found in system path
+    @ECHO possible problem for compiling
+    @ECHO grab an up-2-date version of msvcr110d.dll from MS
+    @ECHO http://www.microsoft.com/en-us/download/details.aspx?id=30679
+    PAUSE
+)
+
+IF EXIST "%SystemRoot%\System32\msvcr110d.dll" (
+    @ECHO.
+    @ECHO copying ms visual c redistributable dll from system path...
+    COPY "%SystemRoot%\System32\msvcr110d.dll" "%DIR%\phpdev\vc11\x86\deps\bin\"
+)
+
 IF NOT EXIST "%DIR%\downloads\php-5.5.21.tar.bz2" (
     @ECHO.
     @ECHO loading php source code...
