@@ -23,16 +23,16 @@ The main reason (for me) is to create up to date versions of the **excel**, **lz
 ## Which PHP versions are currently available?
 
 ### PHP 5.5.x
-- php-5.5.21-nts-VC11-x86
-- php-5.5.21-VC11-x86
-- php-5.5.21-nts-VC11-x64
-- php-5.5.21-VC11-x64
+- php-5.5.22-nts-VC11-x86
+- php-5.5.22-VC11-x86
+- php-5.5.22-nts-VC11-x64
+- php-5.5.22-VC11-x64
 
 ### PHP 5.6.x
-- php-5.6.5-nts-VC11-x86
-- php-5.6.5-VC11-x86
-- php-5.6.5-nts-VC11-x64
-- php-5.6.5-VC11-x64
+- php-5.6.6-nts-VC11-x86
+- php-5.6.6-VC11-x86
+- php-5.6.6-nts-VC11-x64
+- php-5.6.6-VC11-x64
 
 ### PHP 7.0.x-dev
 - php-7.0.0-nts-VC11-x86-dev
@@ -51,11 +51,11 @@ The main reason (for me) is to create up to date versions of the **excel**, **lz
 Open ```VS2012 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.5.21-nts-x86.bat
+    C:\php-sdk> compile-php-5.5.22-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.5.21\Release\php-5.5.21-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.5.22\Release\php-5.5.22-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -66,11 +66,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.5.21-nts-x64.bat
+    C:\php-sdk> compile-php-5.5.22-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.5.21\Release\php-5.5.21-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.5.22\Release\php-5.5.22-nts-Win32-VC11-x64.zip
 
 ## Prerequisites to build PHP 5.5 and PHP 5.6
 

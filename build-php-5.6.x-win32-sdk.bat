@@ -11,7 +11,7 @@ REM setting info box
 @ECHO.
 
 REM setting PHP version
-SET PHPVERSION=5.6.5
+SET PHPVERSION=5.6.6
 SET PHPMAJOR=%PHPVERSION:~0,3%
 
 REM setting full path of current directory to %DIR&
@@ -178,7 +178,7 @@ MD vc11
 CD vc11
 MD x86
 CD x86
-MD obj_5.6.5
+MD obj_5.6.6
 
 IF NOT EXIST "%DIR%\downloads\deps-5.6-vc11-x86.7z" (
     @ECHO.
@@ -227,24 +227,24 @@ IF EXIST "%SystemRoot%\System32\msvcr110d.dll" (
     COPY "%SystemRoot%\System32\msvcr110d.dll" "%DIR%\phpdev\vc11\x86\deps\bin\"
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.6.5.tar.bz2" (
+IF NOT EXIST "%DIR%\downloads\php-5.6.6.tar.bz2" (
     @ECHO.
     @ECHO loading php source code...
-    wget http://de1.php.net/get/php-5.6.5.tar.bz2/from/this/mirror -O %DIR%\downloads\php-5.6.5.tar.bz2 -N
+    wget http://de1.php.net/get/php-5.6.6.tar.bz2/from/this/mirror -O %DIR%\downloads\php-5.6.6.tar.bz2 -N
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.6.5.tar.bz2" (
+IF NOT EXIST "%DIR%\downloads\php-5.6.6.tar.bz2" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
     EXIT
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.6.5.tar" (
-    7za x %DIR%\downloads\php-5.6.5.tar.bz2 -o%DIR%\downloads -y
+IF NOT EXIST "%DIR%\downloads\php-5.6.6.tar" (
+    7za x %DIR%\downloads\php-5.6.6.tar.bz2 -o%DIR%\downloads -y
 )
 
-IF NOT EXIST "%DIR%\downloads\php-5.6.5.tar" (
+IF NOT EXIST "%DIR%\downloads\php-5.6.6.tar" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
@@ -253,15 +253,15 @@ IF NOT EXIST "%DIR%\downloads\php-5.6.5.tar" (
 
 @ECHO.
 @ECHO unpacking php source code...
-7za x %DIR%\downloads\php-5.6.5.tar -o%DIR%\phpdev\vc11\x86 -y
+7za x %DIR%\downloads\php-5.6.6.tar -o%DIR%\phpdev\vc11\x86 -y
 
 REM @ECHO cloning php-src repository from github...
-REM git clone -b "PHP-5.6.5" https://github.com/php/php-src.git php-5.6.5
+REM git clone -b "PHP-5.6.6" https://github.com/php/php-src.git php-5.6.6
 
 CD %DIR%
 
-REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.6.5/ --disable-isapi --disable-nsapi
-SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_5.6.5/ --disable-isapi --disable-nsapi
+REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug-pack --enable-object-out-dir=../obj_5.6.6/ --disable-isapi --disable-nsapi
+SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_5.6.6/ --disable-isapi --disable-nsapi
 
 REM -----------------------------------------------------------
 REM --- PHP_EXCEL / LIBXL EXTENSION
@@ -296,40 +296,40 @@ REM -----------------------------------------------------------
 
 CD %DIR%
 
-@ECHO @ECHO OFF> compile-php-5.6.5-nts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-5.6.5-nts-x32.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-5.6.5-nts-x32.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.6.5-nts-x32.bat
-@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.6.5-nts-x32.bat
-@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.6.5-nts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-5.6.5-nts-x32.bat
-@ECHO.>>compile-php-5.6.5-nts-x32.bat
-@ECHO PAUSE>> compile-php-5.6.5-nts-x32.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.6.5-nts-x32.bat
-@ECHO CD .\phpdev\vc11\x86\php-5.6.5>> compile-php-5.6.5-nts-x32.bat
-@ECHO nmake clean>> compile-php-5.6.5-nts-x32.bat
-@ECHO call buildconf.bat --force>> compile-php-5.6.5-nts-x32.bat
-@ECHO call configure %CFLAGS% --disable-zts>> compile-php-5.6.5-nts-x32.bat
-@ECHO nmake snap>> compile-php-5.6.5-nts-x32.bat
-@ECHO CD .\..\..\..\..\>> compile-php-5.6.5-nts-x32.bat
-@ECHO PAUSE>> compile-php-5.6.5-nts-x32.bat
+@ECHO @ECHO OFF> compile-php-5.6.6-nts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-5.6.6-nts-x32.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-5.6.6-nts-x32.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.6.6-nts-x32.bat
+@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.6.6-nts-x32.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.6.6-nts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-5.6.6-nts-x32.bat
+@ECHO.>>compile-php-5.6.6-nts-x32.bat
+@ECHO PAUSE>> compile-php-5.6.6-nts-x32.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.6.6-nts-x32.bat
+@ECHO CD .\phpdev\vc11\x86\php-5.6.6>> compile-php-5.6.6-nts-x32.bat
+@ECHO nmake clean>> compile-php-5.6.6-nts-x32.bat
+@ECHO call buildconf.bat --force>> compile-php-5.6.6-nts-x32.bat
+@ECHO call configure %CFLAGS% --disable-zts>> compile-php-5.6.6-nts-x32.bat
+@ECHO nmake snap>> compile-php-5.6.6-nts-x32.bat
+@ECHO CD .\..\..\..\..\>> compile-php-5.6.6-nts-x32.bat
+@ECHO PAUSE>> compile-php-5.6.6-nts-x32.bat
 
-@ECHO @ECHO OFF> compile-php-5.6.5-ts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-5.6.5-ts-x32.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-5.6.5-ts-x32.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.6.5-ts-x32.bat
-@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.6.5-ts-x32.bat
-@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.6.5-ts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-5.6.5-ts-x32.bat
-@ECHO.>>compile-php-5.6.5-ts-x32.bat
-@ECHO PAUSE>> compile-php-5.6.5-ts-x32.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.6.5-ts-x32.bat
-@ECHO CD .\phpdev\vc11\x86\php-5.6.5>> compile-php-5.6.5-ts-x32.bat
-@ECHO nmake clean>> compile-php-5.6.5-ts-x32.bat
-@ECHO call buildconf.bat --force>> compile-php-5.6.5-ts-x32.bat
-@ECHO call configure %CFLAGS%>> compile-php-5.6.5-ts-x32.bat
-@ECHO nmake snap>> compile-php-5.6.5-ts-x32.bat
-@ECHO CD .\..\..\..\..\>> compile-php-5.6.5-ts-x32.bat
-@ECHO PAUSE>> compile-php-5.6.5-ts-x32.bat
+@ECHO @ECHO OFF> compile-php-5.6.6-ts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-5.6.6-ts-x32.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-5.6.6-ts-x32.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-5.6.6-ts-x32.bat
+@ECHO @ECHO ## Visual Studio 2012 Native Tools Command Prompt ##>> compile-php-5.6.6-ts-x32.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-5.6.6-ts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-5.6.6-ts-x32.bat
+@ECHO.>>compile-php-5.6.6-ts-x32.bat
+@ECHO PAUSE>> compile-php-5.6.6-ts-x32.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-5.6.6-ts-x32.bat
+@ECHO CD .\phpdev\vc11\x86\php-5.6.6>> compile-php-5.6.6-ts-x32.bat
+@ECHO nmake clean>> compile-php-5.6.6-ts-x32.bat
+@ECHO call buildconf.bat --force>> compile-php-5.6.6-ts-x32.bat
+@ECHO call configure %CFLAGS%>> compile-php-5.6.6-ts-x32.bat
+@ECHO nmake snap>> compile-php-5.6.6-ts-x32.bat
+@ECHO CD .\..\..\..\..\>> compile-php-5.6.6-ts-x32.bat
+@ECHO PAUSE>> compile-php-5.6.6-ts-x32.bat
 
 PAUSE
