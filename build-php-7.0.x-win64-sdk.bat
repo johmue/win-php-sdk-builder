@@ -225,7 +225,7 @@ IF NOT EXIST "%SystemRoot%\System32\msvcr110d.dll" (
 REM IF EXIST "%SystemRoot%\System32\msvcr110d.dll" (
     REM @ECHO.
     REM @ECHO copying ms visual c redistributable dll from system path...
-    REM COPY "%SystemRoot%\System32\msvcr110d.dll" "%DIR%\phpdev\vc11\x86\deps\bin\"
+    REM COPY "%SystemRoot%\System32\msvcr110d.dll" "%DIR%\phpdev\vc11\x64\deps\bin\"
 REM )
 
 REM IF NOT EXIST "%DIR%\downloads\php-7.0.0.tar.bz2" (
@@ -257,13 +257,13 @@ REM @ECHO unpacking php source code...
 REM 7za x %DIR%\downloads\php-7.0.0.tar -o%DIR%\phpdev\vc11\x64 -y
 
 @ECHO cloning php-src repository from github...
-CD %DIR%\phpdev\vc11\x86
+CD %DIR%\phpdev\vc11\x64
 git clone --branch=master --depth=1 https://github.com/php/php-src.git php-7.0.0
 
 CD %DIR%
 
 REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug --enable-object-out-dir=../obj_7.0.0/ --disable-isapi --disable-nsapi
-SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_7.0.0/ --disable-isapi --disable-nsapi
+SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_7.0.0/
 
 REM -----------------------------------------------------------
 REM --- PHP_EXCEL / LIBXL EXTENSION
