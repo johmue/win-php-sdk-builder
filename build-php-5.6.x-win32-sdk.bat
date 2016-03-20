@@ -37,9 +37,6 @@ SET /P BUILDEXT_EXCEL=Do you want to build the excel extension? [y/n]
 @ECHO. 
 SET /P BUILDEXT_LZ4=Do you want to build the lz4 extension? [y/n] 
 
-@ECHO. 
-SET /P BUILDEXT_TWIG=Do you want to build the twig extension? [y/n] 
-
 REM -----------------------------------------------------------
 REM --- TOOLS CHECK
 REM -----------------------------------------------------------
@@ -279,15 +276,6 @@ REM -----------------------------------------------------------
 IF /I %BUILDEXT_LZ4%==Y (
     call %DIR%\ext\php_lz4_5.6.x_x86.bat
     SET CFLAGS=%CFLAGS% --enable-lz4=shared
-)
-
-REM -----------------------------------------------------------
-REM --- TWIG EXTENSION
-REM -----------------------------------------------------------
-
-IF /I %BUILDEXT_TWIG%==Y (
-    call %DIR%\ext\php_twig_5.6.x_x86.bat
-    SET CFLAGS=%CFLAGS% --enable-twig=shared
 )
 
 REM -----------------------------------------------------------
