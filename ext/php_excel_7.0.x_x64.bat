@@ -6,12 +6,12 @@ REM -----------------------------------------------------------
 SET DIR=%~dp0
 SET DIR=%Dir:~0,-1%\..
 
-CD %DIR%\phpdev\vc14\x64\php-7.0.4\ext
+CD %DIR%\phpdev\vc14\x64\php-7.0.6\ext
 
 @ECHO.
 @ECHO cloning php_excel repository...
 git clone https://github.com/johmue/php_excel.git
-CD %DIR%\phpdev\vc14\x64\php-7.0.4\ext\php_excel
+CD %DIR%\phpdev\vc14\x64\php-7.0.6\ext\php_excel
 
 @ECHO checking out PHP7 branch
 git checkout php7
@@ -31,8 +31,8 @@ IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.5.zip" (
 
 @ECHO.
 @ECHO unpacking libxl library...
-7za x %DIR%\downloads\libxl-win-3.6.5.zip -o%DIR%\phpdev\vc14\x64\php-7.0.4\ext\php_excel -y
-CD %DIR%\phpdev\vc14\x64\php-7.0.4\ext\php_excel
+7za x %DIR%\downloads\libxl-win-3.6.5.zip -o%DIR%\phpdev\vc14\x64\php-7.0.6\ext\php_excel -y
+CD %DIR%\phpdev\vc14\x64\php-7.0.6\ext\php_excel
 RENAME libxl-3.6.5.0 libxl
 
 @ECHO.

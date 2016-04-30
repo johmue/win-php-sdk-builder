@@ -24,22 +24,22 @@ The main reason (for me) is to create up to date versions of the **excel** and *
 ## Which PHP versions are currently available?
 
 ### PHP 5.5.x
-- php-5.5.33-nts-VC11-x86
-- php-5.5.33-VC11-x86
-- php-5.5.33-nts-VC11-x64
-- php-5.5.33-VC11-x64
+- php-5.5.35-nts-VC11-x86
+- php-5.5.35-VC11-x86
+- php-5.5.35-nts-VC11-x64
+- php-5.5.35-VC11-x64
 
 ### PHP 5.6.x
-- php-5.6.19-nts-VC11-x86
-- php-5.6.19-VC11-x86
-- php-5.6.19-nts-VC11-x64
-- php-5.6.19-VC11-x64
+- php-5.6.21-nts-VC11-x86
+- php-5.6.21-VC11-x86
+- php-5.6.21-nts-VC11-x64
+- php-5.6.21-VC11-x64
 
 ### PHP 7.0.x-dev
-- php-7.0.4-nts-VC11-x86-dev
-- php-7.0.4-VC11-x86-dev
-- php-7.0.4-nts-VC11-x64-dev
-- php-7.0.4-VC11-x64-dev
+- php-7.0.6-nts-VC11-x86-dev
+- php-7.0.6-VC11-x86-dev
+- php-7.0.6-nts-VC11-x64-dev
+- php-7.0.6-VC11-x64-dev
 
 ## How to build PHP 7.0.x?
 
@@ -52,11 +52,11 @@ The main reason (for me) is to create up to date versions of the **excel** and *
 Open ```VS2015 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-7.0.4-nts-x86.bat
+    C:\php-sdk> compile-php-7.0.6-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_7.0.4\Release\php-7.0.4-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_7.0.6\Release\php-7.0.6-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -67,11 +67,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2015 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-7.0.4-nts-x64.bat
+    C:\php-sdk> compile-php-7.0.6-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_7.0.4\Release\php-7.0.4-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_7.0.6\Release\php-7.0.6-nts-Win32-VC11-x64.zip
 
 ## How to build PHP 5.6.x?
 
@@ -84,11 +84,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.6.19-nts-x86.bat
+    C:\php-sdk> compile-php-5.6.21-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.6.19\Release\php-5.6.19-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.6.21\Release\php-5.6.21-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -99,11 +99,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.6.19-nts-x64.bat
+    C:\php-sdk> compile-php-5.6.21-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.6.19\Release\php-5.6.19-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.6.21\Release\php-5.6.21-nts-Win32-VC11-x64.zip
 
 ## Prerequisites to build PHP 7.0.x
 
