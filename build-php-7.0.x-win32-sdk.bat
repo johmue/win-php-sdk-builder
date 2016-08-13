@@ -11,7 +11,7 @@ REM setting info box
 @ECHO.
 
 REM setting PHP version
-SET PHPVERSION=7.0.6
+SET PHPVERSION=7.0.9
 SET PHPMAJOR=%PHPVERSION:~0,3%
 
 REM setting full path of current directory to %DIR&
@@ -53,7 +53,7 @@ IF %ERRORLEVEL%==9009 (
         REM download wget with php
         @ECHO.
         @ECHO loading wget...
-        php -r "file_put_contents('%DIR%\downloads\wget.exe',file_get_contents('http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe'));"
+        php -r "file_put_contents('%DIR%\downloads\wget.exe',file_get_contents('https://eternallybored.org/misc/wget/current/wget.exe'));"
     )
 
     REM if wget download with PHP failed try to download with bitsadmin.exe
@@ -63,9 +63,8 @@ IF %ERRORLEVEL%==9009 (
             @ECHO.
             @ECHO wget.exe not available
             @ECHO failed to download wget.exe automatically
-            @ECHO please download wget from http://eternallybored.org/misc/wget/wget.exe or
-            @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe manually
-            @ECHO and put the wget.exe file in .\downloads folder
+            @ECHO please download wget from https://eternallybored.org/misc/wget/current/wget.exe
+            @ECHO manually and put the wget.exe file in .\downloads folder
             @ECHO it is also available from the php-sdk-binary-tools zip archive
             PAUSE
             EXIT
@@ -74,9 +73,8 @@ IF %ERRORLEVEL%==9009 (
         REM bitsadmin.exe is available but wget.exe is not - so download it from web
         @ECHO.
         @ECHO loading wget for Windows from...
-        @ECHO http://eternallybored.org/misc/wget/wget.exe
-        REM @ECHO http://users.ugent.be/~bpuype/cgi-bin/fetch.pl?dl=wget/wget.exe
-        bitsadmin.exe /transfer "WgetDownload" "http://eternallybored.org/misc/wget/wget.exe" "%DIR%\downloads\wget.exe"
+        @ECHO https://eternallybored.org/misc/wget/current/wget.exe
+        bitsadmin.exe /transfer "WgetDownload" "https://eternallybored.org/misc/wget/current/wget.exe" "%DIR%\downloads\wget.exe"
     )
 
     REM if download of wget failed stop script
@@ -178,7 +176,7 @@ MD vc14
 CD vc14
 MD x86
 CD x86
-MD obj_7.0.6
+MD obj_7.0.9
 
 IF NOT EXIST "%DIR%\downloads\deps-7.0-vc14-x86.7z" (
     @ECHO.
@@ -227,26 +225,26 @@ IF EXIST "%SystemRoot%\System32\vcruntime140d.dll" (
     COPY "%SystemRoot%\System32\vcruntime140d.dll" "%DIR%\phpdev\vc14\x86\deps\bin\"
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.0.6.tar.bz2" (
+IF NOT EXIST "%DIR%\downloads\php-7.0.9.tar.bz2" (
     @ECHO.
     @ECHO loading php source code...
-    REM wget http://de1.php.net/get/php-7.0.6.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.0.6.tar.bz2 -N
-    REM wget https://downloads.php.net/~ab/php-7.0.6.tar.bz2 -O %DIR%\downloads\php-7.0.6.tar.bz2 -N --no-check-certificate
-    wget http://de1.php.net/get/php-7.0.6.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.0.6.tar.bz2 -N --no-check-certificate
+    REM wget http://de1.php.net/get/php-7.0.9.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.0.9.tar.bz2 -N
+    REM wget https://downloads.php.net/~ab/php-7.0.9.tar.bz2 -O %DIR%\downloads\php-7.0.9.tar.bz2 -N --no-check-certificate
+    wget http://de1.php.net/get/php-7.0.9.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.0.9.tar.bz2 -N --no-check-certificate
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.0.6.tar.bz2" (
+IF NOT EXIST "%DIR%\downloads\php-7.0.9.tar.bz2" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
     EXIT
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.0.6.tar" (
-    7za x %DIR%\downloads\php-7.0.6.tar.bz2 -o%DIR%\downloads -y
+IF NOT EXIST "%DIR%\downloads\php-7.0.9.tar" (
+    7za x %DIR%\downloads\php-7.0.9.tar.bz2 -o%DIR%\downloads -y
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.0.6.tar" (
+IF NOT EXIST "%DIR%\downloads\php-7.0.9.tar" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
@@ -255,19 +253,19 @@ IF NOT EXIST "%DIR%\downloads\php-7.0.6.tar" (
 
 @ECHO.
 @ECHO unpacking php source code...
-7za x %DIR%\downloads\php-7.0.6.tar -o%DIR%\phpdev\vc14\x86 -y
+7za x %DIR%\downloads\php-7.0.9.tar -o%DIR%\phpdev\vc14\x86 -y
 
-@REM rename 7.0.6 to 7.0.6
-@REM MOVE %DIR%\phpdev\vc14\x86\php-7.0.6 %DIR%\phpdev\vc14\x86\php-7.0.6
+@REM rename 7.0.9 to 7.0.9
+@REM MOVE %DIR%\phpdev\vc14\x86\php-7.0.9 %DIR%\phpdev\vc14\x86\php-7.0.9
 
 REM @ECHO cloning php-src repository from github...
 REM CD %DIR%\phpdev\vc14\x86
-REM git clone --branch=master --depth=1 https://github.com/php/php-src.git php-7.0.6
+REM git clone --branch=master --depth=1 https://github.com/php/php-src.git php-7.0.9
 
 CD %DIR%
 
-REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug --enable-object-out-dir=../obj_7.0.6/ --disable-isapi --disable-nsapi
-SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_7.0.6/
+REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug --enable-object-out-dir=../obj_7.0.9/ --disable-isapi --disable-nsapi
+SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_7.0.9/
 
 REM -----------------------------------------------------------
 REM --- PHP_EXCEL / LIBXL EXTENSION
@@ -303,40 +301,40 @@ REM -----------------------------------------------------------
 
 CD %DIR%
 
-@ECHO @ECHO OFF> compile-php-7.0.6-nts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-7.0.6-nts-x32.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-7.0.6-nts-x32.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.0.6-nts-x32.bat
-@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.0.6-nts-x32.bat
-@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.0.6-nts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-7.0.6-nts-x32.bat
-@ECHO.>>compile-php-7.0.6-nts-x32.bat
-@ECHO PAUSE>> compile-php-7.0.6-nts-x32.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.0.6-nts-x32.bat
-@ECHO CD .\phpdev\vc14\x86\php-7.0.6>> compile-php-7.0.6-nts-x32.bat
-@ECHO nmake clean>> compile-php-7.0.6-nts-x32.bat
-@ECHO call buildconf.bat --force>> compile-php-7.0.6-nts-x32.bat
-@ECHO call configure %CFLAGS% --disable-zts>> compile-php-7.0.6-nts-x32.bat
-@ECHO nmake snap /I>> compile-php-7.0.6-nts-x32.bat
-@ECHO CD .\..\..\..\..\>> compile-php-7.0.6-nts-x32.bat
-@ECHO PAUSE>> compile-php-7.0.6-nts-x32.bat
+@ECHO @ECHO OFF> compile-php-7.0.9-nts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-7.0.9-nts-x32.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-7.0.9-nts-x32.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.0.9-nts-x32.bat
+@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.0.9-nts-x32.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.0.9-nts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-7.0.9-nts-x32.bat
+@ECHO.>>compile-php-7.0.9-nts-x32.bat
+@ECHO PAUSE>> compile-php-7.0.9-nts-x32.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.0.9-nts-x32.bat
+@ECHO CD .\phpdev\vc14\x86\php-7.0.9>> compile-php-7.0.9-nts-x32.bat
+@ECHO nmake clean>> compile-php-7.0.9-nts-x32.bat
+@ECHO call buildconf.bat --force>> compile-php-7.0.9-nts-x32.bat
+@ECHO call configure %CFLAGS% --disable-zts>> compile-php-7.0.9-nts-x32.bat
+@ECHO nmake snap /I>> compile-php-7.0.9-nts-x32.bat
+@ECHO CD .\..\..\..\..\>> compile-php-7.0.9-nts-x32.bat
+@ECHO PAUSE>> compile-php-7.0.9-nts-x32.bat
 
-@ECHO @ECHO OFF> compile-php-7.0.6-ts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-7.0.6-ts-x32.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-7.0.6-ts-x32.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.0.6-ts-x32.bat
-@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.0.6-ts-x32.bat
-@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.0.6-ts-x32.bat
-@ECHO @ECHO ####################################################>> compile-php-7.0.6-ts-x32.bat
-@ECHO.>>compile-php-7.0.6-ts-x32.bat
-@ECHO PAUSE>> compile-php-7.0.6-ts-x32.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.0.6-ts-x32.bat
-@ECHO CD .\phpdev\vc14\x86\php-7.0.6>> compile-php-7.0.6-ts-x32.bat
-@ECHO nmake clean>> compile-php-7.0.6-ts-x32.bat
-@ECHO call buildconf.bat --force>> compile-php-7.0.6-ts-x32.bat
-@ECHO call configure %CFLAGS%>> compile-php-7.0.6-ts-x32.bat
-@ECHO nmake snap /I>> compile-php-7.0.6-ts-x32.bat
-@ECHO CD .\..\..\..\..\>> compile-php-7.0.6-ts-x32.bat
-@ECHO PAUSE>> compile-php-7.0.6-ts-x32.bat
+@ECHO @ECHO OFF> compile-php-7.0.9-ts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-7.0.9-ts-x32.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-7.0.9-ts-x32.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.0.9-ts-x32.bat
+@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.0.9-ts-x32.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.0.9-ts-x32.bat
+@ECHO @ECHO ####################################################>> compile-php-7.0.9-ts-x32.bat
+@ECHO.>>compile-php-7.0.9-ts-x32.bat
+@ECHO PAUSE>> compile-php-7.0.9-ts-x32.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.0.9-ts-x32.bat
+@ECHO CD .\phpdev\vc14\x86\php-7.0.9>> compile-php-7.0.9-ts-x32.bat
+@ECHO nmake clean>> compile-php-7.0.9-ts-x32.bat
+@ECHO call buildconf.bat --force>> compile-php-7.0.9-ts-x32.bat
+@ECHO call configure %CFLAGS%>> compile-php-7.0.9-ts-x32.bat
+@ECHO nmake snap /I>> compile-php-7.0.9-ts-x32.bat
+@ECHO CD .\..\..\..\..\>> compile-php-7.0.9-ts-x32.bat
+@ECHO PAUSE>> compile-php-7.0.9-ts-x32.bat
 
 PAUSE
