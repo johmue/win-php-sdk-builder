@@ -65,7 +65,7 @@ The following commands will only work within the VS Command Prompt. **It will no
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc14\x86\obj_7.0.9\Release\php-7.0.9-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc14\x64\obj_7.0.9\Release\php-7.0.9-nts-Win32-VC11-x64.zip
 
 ## How to build PHP 5.6.x?
 
@@ -97,7 +97,7 @@ The following commands will only work within the VS Command Prompt. **It will no
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.6.24\Release\php-5.6.24-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc11\x64\obj_5.6.24\Release\php-5.6.24-nts-Win32-VC11-x64.zip
 
 ## Prerequisites to build PHP 7.0.x
 
