@@ -15,11 +15,11 @@ CD %DIR%\phpdev\vc11\x64\php-5.6.9\ext\php-ext-lz4\lz4
 
 @ECHO.
 @ECHO updating lz4 c files from original source
-wget https://lz4.googlecode.com/svn/trunk/lib/lz4.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lib/lz4.h -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lib/lz4hc.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lib/lz4hc.h -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lib/xxhash.c -N --no-check-certificate
-wget https://lz4.googlecode.com/svn/trunk/lib/xxhash.h -N --no-check-certificate
+wget https://raw.githubusercontent.com/lz4/lz4/dev/lib/lz4.c -N --no-check-certificate
+wget https://raw.githubusercontent.com/lz4/lz4/dev/lib/lz4.h -N --no-check-certificate
+wget https://raw.githubusercontent.com/lz4/lz4/dev/lib/lz4hc.c -N --no-check-certificate
+wget https://raw.githubusercontent.com/lz4/lz4/dev/lib/lz4hc.h -N --no-check-certificate
+wget https://raw.githubusercontent.com/lz4/lz4/dev/lib/xxhash.c -N --no-check-certificate
+wget https://raw.githubusercontent.com/lz4/lz4/dev/lib/xxhash.h -N --no-check-certificate
 
 CD %DIR%

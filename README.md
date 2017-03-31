@@ -8,49 +8,70 @@ For further information see the LICENSE file.
 ## What is it?
 
 Building PHP or PHP extensions on Windows systems is not so easy even with a great step-by-step
-guide available here https://wiki.php.net/internals/windows/stepbystepbuild .
+guide available here https://wiki.php.net/internals/windows/stepbystepbuild and an updated version
+here https://wiki.php.net/internals/windows/stepbystepbuild_sdk_2 .
 
 These scripts are intended to ease this process for the average Windows PHP user and to 
 have a good starting point for compiling your own or third party extensions.
 
 If you have ```Git``` and ```MS Visual Studio Express 2012 for Windows Desktop``` (PHP 5.6.x) or
-```MS Visual Studio Express 2015 for Windows Desktop``` (PHP 7.0.x) already installed it should compile a
-working PHP version within a few clicks.
+```MS Visual Studio Express 2015 for Windows Desktop``` (PHP 7.0.x & PHP 7.1.x) already installed it
+should compile a working PHP version within a few clicks.
+
+If you prefer a lean build environment you can also use ```MS Visual C++ Build Tools 2015```
+instead of Visual Studio which can be found
+here http://landinghub.visualstudio.com/visual-cpp-build-tools .
+
+Please note that PHP 7.0.x and 7.1.x require VC++ 14.0 (= Visual Studio 2015 editions) while PHP 7.2.x
+requires VC++ 15.0 (= Visual Studio 2017 editions).
 
 ## Why?
 
-The main reason (for me) is to create up to date versions of the **excel** and **lz4** extensions for Windows environment.
+The main reason (for me) is to compile up to date versions of the **php_excel** extension for Windows 
+which can be found here https://github.com/iliaal/php_excel .
 
-## Which PHP versions are currently available?
+## Which PHP versions are currently supported?
 
 ### PHP 5.6.x
-- php-5.6.24-nts-VC11-x86
-- php-5.6.24-VC11-x86
-- php-5.6.24-nts-VC11-x64
-- php-5.6.24-VC11-x64
+- php-5.6.30-nts-VC11-x86
+- php-5.6.30-VC11-x86
+- php-5.6.30-nts-VC11-x64
+- php-5.6.30-VC11-x64
 
 ### PHP 7.0.x-dev
-- php-7.0.9-nts-VC11-x86-dev
-- php-7.0.9-VC11-x86-dev
-- php-7.0.9-nts-VC11-x64-dev
-- php-7.0.9-VC11-x64-dev
+- php-7.0.17-nts-VC11-x86-dev
+- php-7.0.17-VC11-x86-dev
+- php-7.0.17-nts-VC11-x64-dev
+- php-7.0.17-VC11-x64-dev
 
-## How to build PHP 7.0.x?
+### PHP 7.1.x-dev
+- php-7.1.3-nts-VC11-x86-dev
+- php-7.1.3-VC11-x86-dev
+- php-7.1.3-nts-VC11-x64-dev
+- php-7.1.3-VC11-x64-dev
+
+## How to build PHP 7.0.x and PHP 7.1.x?
 
 ### 32-bit build
 
     C:\> git clone https://github.com/johmue/win-php-sdk-builder.git php-sdk
     C:\> cd php-sdk
     C:\php-sdk> build-php-7.0.x-win32-sdk.bat
+    ...or...
+    C:\php-sdk> build-php-7.1.x-win32-sdk.bat
 
 Open ```VS2015 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-7.0.9-nts-x86.bat
+    C:\php-sdk> compile-php-7.0.17-nts-x86.bat
+    ...or...
+    C:\php-sdk> compile-php-7.1.3-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc14\x86\obj_7.0.9\Release\php-7.0.9-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc14\x86\obj_7.0.17\Release\php-7.0.17-nts-Win32-VC11-x86.zip
+    ...or...
+    C:\php-sdk\phpdev\vc14\x86\obj_7.1.3\Release\php-7.1.3-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -61,11 +82,15 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2015 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-7.0.9-nts-x64.bat
+    C:\php-sdk> compile-php-7.0.17-nts-x64.bat
+    ...or...
+    C:\php-sdk> compile-php-7.1.3-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc14\x64\obj_7.0.9\Release\php-7.0.9-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc14\x64\obj_7.0.17\Release\php-7.0.17-nts-Win32-VC11-x64.zip
+    ...or...
+    C:\php-sdk\phpdev\vc14\x64\obj_7.1.3\Release\php-7.1.3-nts-Win32-VC11-x64.zip
 
 ## How to build PHP 5.6.x?
 
@@ -78,11 +103,11 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x86 Native Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.6.24-nts-x86.bat
+    C:\php-sdk> compile-php-5.6.30-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x86\obj_5.6.24\Release\php-5.6.24-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc11\x86\obj_5.6.30\Release\php-5.6.30-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -93,19 +118,22 @@ If everything worked fine you will find a compiled version of PHP e.g. here
 Open ```VS2012 x64 Cross Tools Command Prompt``` - you will find it in the start menu group of VS Studio.
 The following commands will only work within the VS Command Prompt. **It will not work with the standard Windows CLI.**
 
-    C:\php-sdk> compile-php-5.6.24-nts-x64.bat
+    C:\php-sdk> compile-php-5.6.30-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
-    C:\php-sdk\phpdev\vc11\x64\obj_5.6.24\Release\php-5.6.24-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc11\x64\obj_5.6.30\Release\php-5.6.30-nts-Win32-VC11-x64.zip
 
-## Prerequisites to build PHP 7.0.x
+## Prerequisites to build PHP 7.0.x or 7.1.x
 
-A) MS Visual Studio Express 2015 for Windows Desktop (choose A or B)  
+A) MS Visual Studio Express 2015 for Windows Desktop (choose A or B or C)  
 https://www.visualstudio.com/post-download-vs?sku=xdesk&clcid=0x409
 
-B) MS Visual Studio Community 2015 (choose A or B)  
+B) MS Visual Studio Community 2015 (choose A or B or C)  
 https://www.visualstudio.com/post-download-vs?sku=community&clcid=0x407
+
+C) MS Visual++ 2015 Build Tools (choose A or B or C)  
+http://landinghub.visualstudio.com/visual-cpp-build-tools
 
 Git for Windows  
 http://git-scm.com/download/win
@@ -136,9 +164,9 @@ https://eternallybored.org/misc/wget/current/wget.exe
 7-zip cli tool (should be automatically loaded by the script if not available)  
 http://downloads.sourceforge.net/sevenzip/7za920.zip
 
-## Prerequisites to build PHP 5.3, PHP 5.4 and PHP 5.5
+## Prerequisites to build PHP 7.2, PHP 5.3, PHP 5.4 and PHP 5.5
 
-PHP 5.3.x, PHP 5.4.x and PHP 5.5.x are not supported
+PHP 7.2.x, PHP 5.3.x, PHP 5.4.x and PHP 5.5.x are not supported
 
 ## Notes
 

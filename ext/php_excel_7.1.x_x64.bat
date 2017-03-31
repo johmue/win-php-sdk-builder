@@ -6,23 +6,24 @@ REM -----------------------------------------------------------
 SET DIR=%~dp0
 SET DIR=%Dir:~0,-1%\..
 
-CD %DIR%\phpdev\vc14\x64\php-7.0.17\ext
+CD %DIR%\phpdev\vc14\x64\php-7.1.3\ext
 
 @ECHO.
 @ECHO cloning php_excel repository...
 git clone https://github.com/johmue/php_excel.git
-CD %DIR%\phpdev\vc14\x64\php-7.0.17\ext\php_excel
+CD %DIR%\phpdev\vc14\x64\php-7.1.3\ext\php_excel
 
 @ECHO checking out PHP7 branch
 git checkout php7
 
-IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.5.zip" (
+IF NOT EXIST "%DIR%\downloads\libxl-win-3.7.2.10.zip" (
     @ECHO.
     @ECHO loading libxl library for php_excel...
-    wget http://libxl.com/download/libxl-win-3.6.5.zip -O %DIR%\downloads\libxl-win-3.6.5.zip -N
+    REM wget http://libxl.com/download/libxl-win-3.7.2.10.zip -O %DIR%\downloads\libxl-win-3.7.2.10.zip -N
+	wget ftp://xlware.com/build/libxl-win-3.7.2.10.zip -O %DIR%\downloads\libxl-win-3.7.2.10.zip -N
 )
 
-IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.5.zip" (
+IF NOT EXIST "%DIR%\downloads\libxl-win-3.7.2.10.zip" (
     @ECHO.
     @ECHO libxl lib not found in .\downloads please re-run this script
     PAUSE
@@ -31,9 +32,9 @@ IF NOT EXIST "%DIR%\downloads\libxl-win-3.6.5.zip" (
 
 @ECHO.
 @ECHO unpacking libxl library...
-7za x %DIR%\downloads\libxl-win-3.6.5.zip -o%DIR%\phpdev\vc14\x64\php-7.0.17\ext\php_excel -y
-CD %DIR%\phpdev\vc14\x64\php-7.0.17\ext\php_excel
-RENAME libxl-3.6.5.0 libxl
+7za x %DIR%\downloads\libxl-win-3.7.2.10.zip -o%DIR%\phpdev\vc14\x64\php-7.1.3\ext\php_excel -y
+CD %DIR%\phpdev\vc14\x64\php-7.1.3\ext\php_excel
+RENAME libxl-3.7.2.10 libxl
 
 @ECHO.
 @ECHO rearranging local libxl files for php-src integration...
