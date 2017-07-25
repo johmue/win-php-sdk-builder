@@ -6,12 +6,12 @@ REM -----------------------------------------------------------
 SET DIR=%~dp0
 SET DIR=%Dir:~0,-1%\..
 
-CD %DIR%\phpdev\vc14\x64\php-7.1.7\ext
+CD %DIR%\phpdev\vc15\x86\php-7.2.0beta1\ext
 
 @ECHO.
 @ECHO cloning php_excel repository...
 git clone https://github.com/johmue/php_excel.git
-CD %DIR%\phpdev\vc14\x64\php-7.1.7\ext\php_excel
+CD %DIR%\phpdev\vc15\x86\php-7.2.0beta1\ext\php_excel
 
 @ECHO checking out PHP7 branch
 git checkout php7
@@ -32,21 +32,21 @@ IF NOT EXIST "%DIR%\downloads\libxl-win-3.8.0.5.zip" (
 
 @ECHO.
 @ECHO unpacking libxl library...
-7za x %DIR%\downloads\libxl-win-3.8.0.5.zip -o%DIR%\phpdev\vc14\x64\php-7.1.7\ext\php_excel -y
-CD %DIR%\phpdev\vc14\x64\php-7.1.7\ext\php_excel
+7za x %DIR%\downloads\libxl-win-3.8.0.5.zip -o%DIR%\phpdev\vc15\x86\php-7.2.0beta1\ext\php_excel -y
+CD %DIR%\phpdev\vc15\x86\php-7.2.0beta1\ext\php_excel
 RENAME libxl-3.8.0.5 libxl
 
 @ECHO.
 @ECHO rearranging local libxl files for php-src integration...
 XCOPY .\libxl\include_c\* .\libxl\ /E /Y
-XCOPY .\libxl\bin64\* .\libxl\ /E /Y
+XCOPY .\libxl\bin\* .\libxl\ /E /Y
 
 @ECHO.
 @ECHO copying local libxl to php deps folder...
-XCOPY .\libxl\bin64\* %DIR%\phpdev\vc14\x64\deps\bin\ /E /Y
-XCOPY .\libxl\lib64\* %DIR%\phpdev\vc14\x64\deps\lib\ /E /Y
-XCOPY .\libxl\include_c\libxl.h %DIR%\phpdev\vc14\x64\deps\include\ /E /Y
-MD %DIR%\phpdev\vc14\x64\deps\include\libxl
-XCOPY .\libxl\* %DIR%\phpdev\vc14\x64\deps\include\libxl\ /E /Y
+XCOPY .\libxl\bin\* %DIR%\phpdev\vc15\x86\deps\bin\ /E /Y
+XCOPY .\libxl\lib\* %DIR%\phpdev\vc15\x86\deps\lib\ /E /Y
+XCOPY .\libxl\include_c\libxl.h %DIR%\phpdev\vc15\x86\deps\include\ /E /Y
+MD %DIR%\phpdev\vc15\x86\deps\include\libxl
+XCOPY .\libxl\* %DIR%\phpdev\vc15\x86\deps\include\libxl\ /E /Y
 
 CD %DIR%

@@ -38,17 +38,23 @@ which can be found here https://github.com/iliaal/php_excel .
 - php-5.6.30-nts-VC11-x64
 - php-5.6.30-VC11-x64
 
-### PHP 7.0.x-dev
-- php-7.0.17-nts-VC11-x86-dev
-- php-7.0.17-VC11-x86-dev
-- php-7.0.17-nts-VC11-x64-dev
-- php-7.0.17-VC11-x64-dev
+### PHP 7.0.x
+- php-7.0.17-nts-VC14-x86
+- php-7.0.17-VC14-x86
+- php-7.0.17-nts-VC14-x64
+- php-7.0.17-VC14-x64
 
-### PHP 7.1.x-dev
-- php-7.1.3-nts-VC11-x86-dev
-- php-7.1.3-VC11-x86-dev
-- php-7.1.3-nts-VC11-x64-dev
-- php-7.1.3-VC11-x64-dev
+### PHP 7.1.x
+- php-7.1.7-nts-VC14-x86
+- php-7.1.7-VC14-x86
+- php-7.1.7-nts-VC14-x64
+- php-7.1.7-VC14-x64
+
+### PHP 7.2.x-dev
+- php-7.2.0beta1-nts-VC15-x86-dev
+- php-7.2.0beta1-VC15-x86-dev
+- php-7.2.0beta1-nts-VC15-x64-dev
+- php-7.2.0beta1-VC15-x64-dev
 
 ## How to build PHP 7.0.x and PHP 7.1.x?
 
@@ -65,13 +71,13 @@ The following commands will only work within the VS Command Prompt. **It will no
 
     C:\php-sdk> compile-php-7.0.17-nts-x86.bat
     ...or...
-    C:\php-sdk> compile-php-7.1.3-nts-x86.bat
+    C:\php-sdk> compile-php-7.1.7-nts-x86.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
     C:\php-sdk\phpdev\vc14\x86\obj_7.0.17\Release\php-7.0.17-nts-Win32-VC11-x86.zip
     ...or...
-    C:\php-sdk\phpdev\vc14\x86\obj_7.1.3\Release\php-7.1.3-nts-Win32-VC11-x86.zip
+    C:\php-sdk\phpdev\vc14\x86\obj_7.1.7\Release\php-7.1.7-nts-Win32-VC11-x86.zip
 
 ### 64-bit build
 
@@ -84,13 +90,13 @@ The following commands will only work within the VS Command Prompt. **It will no
 
     C:\php-sdk> compile-php-7.0.17-nts-x64.bat
     ...or...
-    C:\php-sdk> compile-php-7.1.3-nts-x64.bat
+    C:\php-sdk> compile-php-7.1.7-nts-x64.bat
 
 If everything worked fine you will find a compiled version of PHP e.g. here
 
     C:\php-sdk\phpdev\vc14\x64\obj_7.0.17\Release\php-7.0.17-nts-Win32-VC11-x64.zip
     ...or...
-    C:\php-sdk\phpdev\vc14\x64\obj_7.1.3\Release\php-7.1.3-nts-Win32-VC11-x64.zip
+    C:\php-sdk\phpdev\vc14\x64\obj_7.1.7\Release\php-7.1.7-nts-Win32-VC11-x64.zip
 
 ## How to build PHP 5.6.x?
 
@@ -166,7 +172,7 @@ http://downloads.sourceforge.net/sevenzip/7za920.zip
 
 ## Prerequisites to build PHP 7.2, PHP 5.3, PHP 5.4 and PHP 5.5
 
-PHP 7.2.x, PHP 5.3.x, PHP 5.4.x and PHP 5.5.x are not supported
+PHP 5.3.x, PHP 5.4.x and PHP 5.5.x are not supported
 
 ## Notes
 
