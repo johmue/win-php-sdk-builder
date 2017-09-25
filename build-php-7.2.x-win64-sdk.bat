@@ -12,7 +12,7 @@ REM setting info box
 @ECHO.
 
 REM setting PHP version
-SET PHPVERSION=7.2.0beta1
+SET PHPVERSION=7.2.0RC2
 SET PHPMAJOR=%PHPVERSION:~0,3%
 
 REM setting full path of current directory to %DIR&
@@ -155,7 +155,7 @@ IF NOT EXIST "%DIR%\php-sdk-binary-tools" (
     REM wget http://windows.php.net/downloads/php-sdk/php-sdk-binary-tools-20110915.zip -O %DIR%\downloads\php-sdk-binary-tools-20110915.zip -N
 	git clone https://github.com/OSTC/php-sdk-binary-tools.git %DIR%\downloads\php-sdk-binary-tools
 	cd %DIR%\downloads\php-sdk-binary-tools
-	git checkout php-sdk-2.0.9
+	git checkout php-sdk-2.0.11
 	cd %DIR%
 	XCOPY %DIR%\downloads\php-sdk-binary-tools\* %DIR%\ /E /Y
 )
@@ -179,7 +179,7 @@ MD vc15
 CD vc15
 MD x64
 CD x64
-MD obj_7.2.0beta1
+MD obj_7.2.0RC2
 
 
 IF NOT EXIST "%DIR%\downloads\deps-master-vc15-x64.7z" (
@@ -229,27 +229,27 @@ REM IF EXIST "%SystemRoot%\System32\msvcr110d.dll" (
     REM COPY "%SystemRoot%\System32\msvcr110d.dll" "%DIR%\phpdev\vc15\x64\deps\bin\"
 REM )
 
-IF NOT EXIST "%DIR%\downloads\php-7.2.0beta1.tar.bz2" (
+IF NOT EXIST "%DIR%\downloads\php-7.2.0RC2.tar.bz2" (
     @ECHO.
     @ECHO loading php source code...
-    REM wget http://de1.php.net/get/php-7.2.0beta1.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.2.0beta1.tar.bz2 -N
-    REM wget https://downloads.php.net/~ab/php-7.2.0beta1.tar.bz2 -O %DIR%\downloads\php-7.2.0beta1.tar.bz2 -N --no-check-certificate
-    REM wget http://de1.php.net/get/php-7.2.0beta1.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.2.0beta1.tar.bz2 -N --no-check-certificate
-	wget https://downloads.php.net/~pollita/php-7.2.0beta1.tar.bz2 -O %DIR%\downloads\php-7.2.0beta1.tar.bz2 -N --no-check-certificate
+    REM wget http://de1.php.net/get/php-7.2.0RC2.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.2.0RC2.tar.bz2 -N
+    REM wget https://downloads.php.net/~ab/php-7.2.0RC2.tar.bz2 -O %DIR%\downloads\php-7.2.0RC2.tar.bz2 -N --no-check-certificate
+    REM wget http://de1.php.net/get/php-7.2.0RC2.tar.bz2/from/this/mirror -O %DIR%\downloads\php-7.2.0RC2.tar.bz2 -N --no-check-certificate
+	wget https://downloads.php.net/~pollita/php-7.2.0RC2.tar.bz2 -O %DIR%\downloads\php-7.2.0RC2.tar.bz2 -N --no-check-certificate
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.2.0beta1.tar.bz2" (
+IF NOT EXIST "%DIR%\downloads\php-7.2.0RC2.tar.bz2" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
     EXIT
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.2.0beta1.tar" (
-    7za x %DIR%\downloads\php-7.2.0beta1.tar.bz2 -o%DIR%\downloads -y
+IF NOT EXIST "%DIR%\downloads\php-7.2.0RC2.tar" (
+    7za x %DIR%\downloads\php-7.2.0RC2.tar.bz2 -o%DIR%\downloads -y
 )
 
-IF NOT EXIST "%DIR%\downloads\php-7.2.0beta1.tar" (
+IF NOT EXIST "%DIR%\downloads\php-7.2.0RC2.tar" (
     @ECHO.
     @ECHO php source code not found in .\downloads please re-run this script
     PAUSE
@@ -258,19 +258,19 @@ IF NOT EXIST "%DIR%\downloads\php-7.2.0beta1.tar" (
 
 @ECHO.
 @ECHO unpacking php source code...
-7za x %DIR%\downloads\php-7.2.0beta1.tar -o%DIR%\phpdev\vc15\x64 -y
+7za x %DIR%\downloads\php-7.2.0RC2.tar -o%DIR%\phpdev\vc15\x64 -y
 
-@REM rename 7.2.0beta1 to 7.2.0beta1
-REM MOVE %DIR%\phpdev\vc15\x64\php-7.2.0beta1 %DIR%\phpdev\vc15\x64\php-7.2.0beta1
+@REM rename 7.2.0RC2 to 7.2.0RC2
+REM MOVE %DIR%\phpdev\vc15\x64\php-7.2.0RC2 %DIR%\phpdev\vc15\x64\php-7.2.0RC2
 
 REM @ECHO cloning php-src repository from github...
 REM CD %DIR%\phpdev\vc15\x64
-REM git clone --branch=master --depth=1 https://github.com/php/php-src.git php-7.2.0beta1
+REM git clone --branch=master --depth=1 https://github.com/php/php-src.git php-7.2.0RC2
 
 CD %DIR%
 
-REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug --enable-object-out-dir=../obj_7.2.0beta1/ --disable-isapi --disable-nsapi
-SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_7.2.0beta1/
+REM SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-debug --enable-object-out-dir=../obj_7.2.0RC2/ --disable-isapi --disable-nsapi
+SET CFLAGS=--disable-all --enable-cli --enable-snapshot-build --enable-object-out-dir=../obj_7.2.0RC2/
 
 REM -----------------------------------------------------------
 REM --- PHP_EXCEL / LIBXL EXTENSION
@@ -297,40 +297,40 @@ REM -----------------------------------------------------------
 
 CD %DIR%
 
-@ECHO @ECHO OFF> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO.>>compile-php-7.2.0beta1-nts-x64.bat
-@ECHO PAUSE>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO CD .\phpdev\vc15\x64\php-7.2.0beta1>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO nmake clean>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO call buildconf.bat --force>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO call configure %CFLAGS% --disable-zts>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO nmake snap /I>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO CD .\..\..\..\..\>> compile-php-7.2.0beta1-nts-x64.bat
-@ECHO PAUSE>> compile-php-7.2.0beta1-nts-x64.bat
+@ECHO @ECHO OFF> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO.>>compile-php-7.2.0RC2-nts-x64.bat
+@ECHO PAUSE>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO CD .\phpdev\vc15\x64\php-7.2.0RC2>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO nmake clean>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO call buildconf.bat --force>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO call configure %CFLAGS% --disable-zts>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO nmake snap /I>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO CD .\..\..\..\..\>> compile-php-7.2.0RC2-nts-x64.bat
+@ECHO PAUSE>> compile-php-7.2.0RC2-nts-x64.bat
 
-@ECHO @ECHO OFF> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO @ECHO ## Attention                                      ##>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO @ECHO ####################################################>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO.>>compile-php-7.2.0beta1-ts-x64.bat
-@ECHO PAUSE>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO CD .\phpdev\vc15\x64\php-7.2.0beta1>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO nmake clean>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO call buildconf.bat --force>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO call configure %CFLAGS%>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO nmake snap /I>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO CD .\..\..\..\..\>> compile-php-7.2.0beta1-ts-x64.bat
-@ECHO PAUSE>> compile-php-7.2.0beta1-ts-x64.bat
+@ECHO @ECHO OFF> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO @ECHO ## Attention                                      ##>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO @ECHO ## please call this batch file with               ##>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO @ECHO ## Visual Studio 2015 Native Tools Command Prompt ##>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO @ECHO ## the standard Windows CLI will not work         ##>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO @ECHO ####################################################>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO.>>compile-php-7.2.0RC2-ts-x64.bat
+@ECHO PAUSE>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO call .\bin\phpsdk_setvars.bat>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO CD .\phpdev\vc15\x64\php-7.2.0RC2>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO nmake clean>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO call buildconf.bat --force>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO call configure %CFLAGS%>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO nmake snap /I>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO CD .\..\..\..\..\>> compile-php-7.2.0RC2-ts-x64.bat
+@ECHO PAUSE>> compile-php-7.2.0RC2-ts-x64.bat
 
 PAUSE
